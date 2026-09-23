@@ -1,0 +1,205 @@
+/* Dúvidas: carvão com a malha. Título fixo à esquerda enquanto o acordeão
+   rola à direita. O acordeão abre pela altura com grid-template-rows (0fr a
+   1fr), sem medir nada em JS e sem salto. */
+.duvidas {
+  padding: var(--secao) 0;
+  background: var(--carvao);
+}
+
+.duvidas__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: clamp(36px, 5.5vw, 96px);
+}
+
+.duvidas__cabeca {
+  position: sticky;
+  top: calc(var(--topo-h) + 40px);
+}
+
+.duvidas__convite {
+  margin-top: 22px;
+}
+
+.duvidas__texto {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 26rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--texto-2);
+}
+
+.duvidas__texto .ic {
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  color: var(--mint);
+}
+
+.duvidas__convite .btn {
+  margin-top: 26px;
+}
+
+.faq {
+  display: grid;
+  gap: 10px;
+}
+
+.faq__item {
+  border: 1px solid var(--linha-fraca);
+  border-radius: var(--raio);
+  background: rgb(2 13 9 / .55);
+  transition: border-color var(--t-hover) var(--ease), background-color var(--t-hover) var(--ease);
+}
+
+.faq__item.aberto {
+  border-color: rgb(0 144 72 / .75);
+  background: rgb(2 13 9 / .85);
+}
+
+.faq__pergunta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  min-height: 64px;
+  padding: 18px 24px;
+  border-radius: var(--raio);
+  text-align: left;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--branco);
+  transition: color var(--t-micro) var(--ease);
+}
+
+.faq__pergunta:focus-visible {
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .faq__pergunta:hover {
+    color: var(--mint);
+  }
+}
+
+/* o + vira − girando o traço vertical */
+.faq__sinal {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.faq__sinal::before,
+.faq__sinal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mint);
+  transition: transform 340ms var(--ease);
+}
+
+.faq__sinal::after {
+  transform: rotate(90deg);
+}
+
+.faq__item.aberto .faq__sinal::after {
+  transform: rotate(0deg);
+}
+
+.faq__resposta {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 380ms var(--ease), visibility 0s;
+}
+
+.js .faq__item:not(.aberto) .faq__resposta {
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 300ms var(--ease-suave), visibility 0s 300ms;
+}
+
+.faq__resposta > div {
+  overflow: hidden;
+}
+
+.faq__resposta p {
+  padding: 0 24px 24px;
+  max-width: 44rem;
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--texto-2);
+}
+
+.link {
+  color: var(--mint);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color var(--t-micro) var(--ease);
+}
+
+.link:hover {
+  color: var(--mint-claro);
+}
+
+/* celular: título, acordeão, e o convite pro WhatsApp num painel no fim */
+@media (max-width: 1023px) {
+  .duvidas__grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .duvidas__cabeca {
+    display: contents;
+  }
+
+  .duvidas__cabeca .rotulo { order: 1; }
+  .duvidas__cabeca .titulo { order: 2; }
+
+  .faq {
+    order: 3;
+    margin-top: 32px;
+  }
+
+  .duvidas__convite {
+    order: 4;
+    margin-top: 28px;
+    padding: 22px;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    background: var(--vidro);
+  }
+
+  .duvidas__texto {
+    max-width: none;
+    color: var(--branco);
+  }
+
+  .duvidas__convite .btn {
+    width: 100%;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .faq__pergunta {
+    min-height: 58px;
+    padding: 16px 18px;
+    font-size: 1rem;
+  }
+
+  .faq__resposta p {
+    padding: 0 18px 20px;
+    font-size: .9375rem;
+  }
+}

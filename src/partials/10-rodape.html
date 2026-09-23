@@ -1,0 +1,60 @@
+<footer class="rodape" id="contato">
+  <svg class="rodape__linha" viewBox="0 0 1440 84" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+    <path class="rodape__traco" d="M-10 16C170 26 420 64 650 68C880 72 1110 58 1296 36L1384 12"/>
+    <path class="rodape__seta" d="M1402 4L1386 26L1377 9Z"/>
+    <circle class="rodape__no" cx="650" cy="68" r="3.5"/>
+    <circle class="rodape__no rodape__no--forte" cx="1296" cy="36" r="4.5"/>
+  </svg>
+
+  <div class="rodape__grade container">
+    <div class="rodape__marca">
+      <a class="rodape__logo" href="#inicio" aria-label="V8 Consultoria e Assessoria Financeira, voltar ao início">
+        <img src="/assets/img/v8-simbolo-180.webp" srcset="/assets/img/v8-simbolo-180.webp 180w, /assets/img/v8-simbolo-360.webp 360w" sizes="86px" width="180" height="127" alt="" loading="lazy" decoding="async">
+        <span>Consultoria e<br>Assessoria Financeira</span>
+      </a>
+      <p class="rodape__frase">Primeiro o resultado.<br><em>Depois o valor.</em></p>
+    </div>
+
+    <nav class="rodape__col" aria-labelledby="rodape-nav">
+      <h2 class="rodape__titulo" id="rodape-nav">Navegação</h2>
+      <ul class="rodape__lista">
+        <li><a href="#apontamento-interno">Apontamento interno</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#inteligencia-artificial">Inteligência artificial</a></li>
+        <li><a href="#quem-somos">Quem somos</a></li>
+        <li><a href="#pagamentos">Pagamentos</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#analise-gratuita">Análise gratuita</a></li>
+      </ul>
+    </nav>
+
+    <div class="rodape__col">
+      <h2 class="rodape__titulo">Contato</h2>
+      <ul class="rodape__lista rodape__lista--icones">
+        <?se whatsapp?><li><a href="{{whatsappLink}}" target="_blank" rel="noopener" data-evento="whatsapp_rodape"><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg>Chamar no WhatsApp</a></li><?/se?>
+        <?se whatsappExibicao?><li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>{{whatsappExibicao}}</li><?/se?>
+        <?se email?><li><a href="mailto:{{email}}"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>{{email}}</a></li><?/se?>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-device-laptop"/></svg>Atendimento 100% digital</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-brasil"/></svg>Em todo o Brasil</li>
+        <?se horario?><li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>{{horario}}</li><?/se?>
+        <?se instagram?><li><a href="{{instagram}}" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-brand-instagram"/></svg>Instagram</a></li><?/se?>
+      </ul>
+    </div>
+
+    <div class="rodape__col">
+      <h2 class="rodape__titulo">Documentos</h2>
+      <ul class="rodape__lista">
+        <li><a href="/docs/termo-de-autorizacao-v8.pdf" download data-evento="download_termo_autorizacao_rodape">Termo de Autorização</a></li>
+        <li><a href="/docs/termo-de-condicoes-comerciais-v8.pdf" download data-evento="download_termo_comercial_rodape">Condições Comerciais</a></li>
+        <li><a href="/docs/minuta-peticao-correcao-scr.docx" download data-evento="download_peticao_rodape">Minuta de petição (SCR)</a></li>
+        <?se politicaPrivacidade?><li><a href="{{politicaPrivacidade}}" target="_blank" rel="noopener">Política de Privacidade</a></li><?/se?>
+        <?se termosDeUso?><li><a href="{{termosDeUso}}" target="_blank" rel="noopener">Termos de Uso</a></li><?/se?>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rodape__base container">
+    <p class="rodape__aviso">A V8 presta serviço de consultoria e assessoria financeira. A aprovação, o limite, a taxa e a liberação de crédito são decisão exclusiva de cada instituição financeira. A V8 não apaga informação verdadeira e legitimamente registrada: atua na correção de dados inexatos, incompletos ou desatualizados, nos termos do art. 43 do Código de Defesa do Consumidor e do art. 18 da Lei 13.709/2018.</p>
+    <p class="rodape__copy">© {{ano}} V8 Assessoria e Consultoria Financeira LTDA<?se cnpj?> · CNPJ {{cnpj}}<?/se?> · Todos os direitos reservados</p>
+  </div>
+</footer>

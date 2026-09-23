@@ -1,0 +1,456 @@
+/* Hero. Três composições:
+   - desktop (1024+): a foto é o fundo inteiro e o texto fica no escuro da
+     esquerda. A altura acompanha a proporção da foto (56,25vw), então em
+     1440 o cartão, a família, o carro e a chave aparecem inteiros;
+   - tablet (768-1023): título, foto larga, subtítulo, botões;
+   - celular: o título fica sobre o céu escuro da foto vertical, a família
+     aparece logo abaixo, e só depois vêm subtítulo e botões (padrão da casa:
+     título, imagem, subtítulo, botões). */
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--preto);
+  overflow: clip;
+}
+
+.hero__rotulo {
+  color: var(--agua);
+  font-size: .75rem;
+  letter-spacing: .24em;
+}
+
+.hero__titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 1rem + 5.9vw, 4.25rem);
+  line-height: .98;
+  letter-spacing: -.012em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+/* cada linha é uma máscara: o texto sobe de dentro dela na entrada. O respiro
+   em cima guarda o acento do Ê e do É, que passa da altura da maiúscula. */
+.hero__titulo .linha {
+  display: block;
+  overflow: hidden;
+  padding: .14em 0 .02em;
+  margin-top: -.14em;
+}
+
+.hero__titulo .linha > span {
+  display: inline-block;
+}
+
+.hero__titulo .linha--mint {
+  color: var(--mint);
+}
+
+.hero__sub {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--cromo-claro);
+  text-wrap: pretty;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero__apoio {
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.hero__apoio span {
+  white-space: nowrap;
+}
+
+.hero__apoio i {
+  font-style: normal;
+  color: var(--verde);
+  margin: 0 .3em;
+}
+
+/* ------------------------------------------- linha e piso do mockup */
+/* Os dois grafismos que o mockup desenha por cima da foto: a subida da linha
+   da virada, fina, sobre a casa, e o piso de malha em perspectiva sob o
+   texto. Só no desktop, onde a foto é fundo. */
+.hero__linha,
+.hero__piso {
+  display: none;
+}
+
+.hero__linha-traco,
+.hero__linha-halo {
+  fill: none;
+  stroke: var(--mint);
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+}
+
+.hero__linha-traco {
+  stroke-width: 1.6;
+  opacity: .85;
+}
+
+.hero__linha-halo {
+  stroke-width: 7;
+  opacity: .14;
+}
+
+.hero__no {
+  fill: var(--mint);
+}
+
+.hero__no-luz {
+  fill: var(--mint);
+  opacity: .16;
+}
+
+@media (min-width: 1024px) {
+  .hero__piso {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    /* no mockup a malha vai da altura dos botões até os selos: o elemento é
+       alto porque a perspectiva achata ele pra menos da metade */
+    left: -10%;
+    bottom: 11%;
+    width: 72%;
+    height: 76%;
+    pointer-events: none;
+    background-image:
+      radial-gradient(60% 55% at 30% 100%, rgb(0 249 164 / .16), transparent 70%),
+      linear-gradient(rgb(0 249 164 / .6) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(0 249 164 / .6) 1px, transparent 1px);
+    background-size: 100% 100%, 72px 52px, 72px 52px;
+    background-position: center bottom;
+    transform: perspective(820px) rotateX(55deg);
+    transform-origin: 50% 100%;
+    -webkit-mask-image: linear-gradient(0deg, #000 0%, rgb(0 0 0 / .7) 40%, transparent 96%), linear-gradient(90deg, #000 40%, transparent 94%);
+    mask-image: linear-gradient(0deg, #000 0%, rgb(0 0 0 / .7) 40%, transparent 96%), linear-gradient(90deg, #000 40%, transparent 94%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .hero__linha {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    right: 4.6%;
+    top: 10.5%;
+    width: 20.5%;
+    height: auto;
+    aspect-ratio: 300 / 172;
+    overflow: visible;
+    pointer-events: none;
+  }
+}
+
+/* ---------------------------------------------------------------- selos */
+.selos {
+  --c0: 18px;
+  --c: 18px;
+  --fundo: rgb(2 13 9 / .7);
+  --borda: rgb(0 144 72 / .5);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  backdrop-filter: blur(12px) saturate(130%);
+}
+
+.selos li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 26px 16px;
+  font: 700 .75rem/1.35 var(--fonte-corpo);
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.selos li + li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24%;
+  bottom: 24%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--linha-forte), transparent);
+}
+
+.selos .ic {
+  width: 38px;
+  height: 38px;
+  stroke-width: 1.25;
+  color: var(--agua);
+}
+
+/* -------------------------------------------------------------- desktop */
+@media (min-width: 1024px) {
+  .hero {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    min-height: clamp(660px, 56.25vw, 100svh);
+  }
+
+  .hero__foto {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* quando a tela é mais estreita que a foto, corta a direita (carro) e
+       nunca a esquerda: o cartão e a família não andam pra baixo do texto */
+    object-position: 0% 42%;
+  }
+
+  .hero__veu {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgb(2 13 9 / .84) 0%, rgb(2 13 9 / .6) 22%, rgb(2 13 9 / .22) 40%, rgb(2 13 9 / 0) 54%),
+      linear-gradient(0deg, var(--preto) 0%, rgb(2 13 9 / .7) 10%, rgb(2 13 9 / 0) 30%),
+      linear-gradient(180deg, rgb(2 13 9 / .55) 0%, rgb(2 13 9 / 0) 18%);
+  }
+
+  .hero__conteudo {
+    align-self: center;
+    padding-top: calc(var(--topo-h) + 36px);
+    padding-bottom: 44px;
+  }
+
+  .hero__titulo {
+    /* a primeira linha tem que terminar antes do cartão, que começa a 45% da
+       largura da foto */
+    font-size: min(4.85vw, 4.25rem);
+    margin-top: 20px;
+  }
+
+  .hero__sub {
+    max-width: 34rem;
+    margin-top: 26px;
+  }
+
+  .hero__ctas {
+    margin-top: 34px;
+  }
+
+  .hero__apoio {
+    margin-top: 22px;
+  }
+
+  .hero__selos {
+    position: relative;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero__sub {
+    max-width: 29rem;
+    font-size: 1.0625rem;
+  }
+
+  .selos li {
+    gap: 12px;
+    padding-inline: 10px;
+    font-size: .6875rem;
+  }
+
+  .selos .ic {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ------------------------------------------------------ tablet e celular */
+@media (max-width: 1023px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto auto auto auto;
+    padding-bottom: 12px;
+  }
+
+  .hero__conteudo {
+    display: contents;
+  }
+
+  /* tudo na mesma coluna: sem isso o grid abre uma coluna implícita pro
+     título, porque a foto já ocupa a coluna 1 nas linhas de cima */
+  .hero > *,
+  .hero__conteudo > * {
+    grid-column: 1;
+  }
+
+  .hero__rotulo,
+  .hero__titulo,
+  .hero__sub,
+  .hero__ctas,
+  .hero__apoio {
+    position: relative;
+    z-index: 1;
+    padding-inline: var(--gutter);
+  }
+
+  .hero__rotulo {
+    grid-row: 1;
+    margin-top: calc(var(--topo-h) + 26px);
+  }
+
+  .hero__titulo {
+    grid-row: 2;
+    margin-top: 12px;
+  }
+
+  .hero__foto,
+  .hero__veu {
+    grid-column: 1;
+    grid-row: 1 / 4;
+  }
+
+  .hero__foto {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hero__img {
+    width: 100%;
+  }
+
+  .hero__veu {
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgb(2 13 9 / .9) 0%, rgb(2 13 9 / .62) 30%, rgb(2 13 9 / 0) 50%),
+      linear-gradient(0deg, var(--preto) 0%, rgb(2 13 9 / .75) 11%, rgb(2 13 9 / 0) 26%);
+  }
+
+  .hero__sub {
+    grid-row: 4;
+    margin-top: -64px;
+    max-width: 40rem;
+  }
+
+  .hero__ctas {
+    grid-row: 5;
+    display: grid;
+    margin-top: 26px;
+  }
+
+  .hero__apoio {
+    grid-row: 6;
+    margin-top: 18px;
+  }
+
+  .hero__selos {
+    grid-row: 7;
+    margin-top: 34px;
+  }
+
+  .selos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .selos li {
+    grid-column: span 2;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px 8px 18px;
+    text-align: center;
+    font-size: .6875rem;
+  }
+
+  .selos li:nth-child(4),
+  .selos li:nth-child(5) {
+    grid-column: span 3;
+    flex-direction: row;
+    padding: 18px 12px;
+    text-align: left;
+    border-top: 1px solid var(--linha-fraca);
+  }
+
+  .selos li:nth-child(4)::before {
+    display: none;
+  }
+
+  .selos li:nth-child(4) .ic,
+  .selos li:nth-child(5) .ic {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* tablet: o título fica no escuro e a foto larga entra inteira embaixo dele */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__foto,
+  .hero__veu {
+    grid-row: 3;
+    margin-top: 28px;
+  }
+
+  .hero__veu {
+    background:
+      linear-gradient(180deg, var(--preto) 0%, rgb(2 13 9 / 0) 22%),
+      linear-gradient(0deg, var(--preto) 0%, rgb(2 13 9 / .7) 14%, rgb(2 13 9 / 0) 34%);
+  }
+
+  .hero__titulo {
+    font-size: clamp(3.2rem, 1rem + 5vw, 4rem);
+  }
+
+  .hero__ctas {
+    display: flex;
+  }
+
+  .selos {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .selos li,
+  .selos li:nth-child(4),
+  .selos li:nth-child(5) {
+    grid-column: auto;
+    flex-direction: column;
+    text-align: center;
+    border-top: 0;
+    padding: 22px 8px 18px;
+  }
+
+  .selos li:nth-child(4)::before {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__apoio i {
+    display: none;
+  }
+
+  .hero__apoio span {
+    display: block;
+  }
+
+  .hero__rotulo {
+    font-size: .6875rem;
+    letter-spacing: .14em;
+  }
+
+  .hero__sub {
+    font-size: 1.0625rem;
+  }
+}

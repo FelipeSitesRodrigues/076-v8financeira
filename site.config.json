@@ -1,0 +1,23 @@
+{
+  "_leia": "Dados que ainda dependem do Augusto. Campo vazio faz o elemento sumir do site em vez de virar link morto. O build lista o que está faltando a cada execução.",
+
+  "whatsapp": "",
+  "_whatsapp": "só dígitos, com 55 e DDD. Ex.: 5511999998888. Sem ele, todo botão de WhatsApp cai no e-mail.",
+  "whatsappExibicao": "",
+  "_whatsappExibicao": "como o número aparece escrito no rodapé. Ex.: (11) 99999-8888",
+  "whatsappMensagem": "Olá! Vim pelo site da V8 e quero fazer minha análise gratuita.",
+
+  "email": "suporte@assessoriav8.com.br",
+  "_email": "veio do VIDEO 3 do Augusto, onde ele pede o termo assinado nesse endereço. Confirmar antes de publicar.",
+
+  "horario": "",
+  "instagram": "",
+  "cnpj": "",
+
+  "dominio": "",
+  "_dominio": "com https e sem barra no fim. Usado no canonical, og:image, sitemap e robots. O VIDEO 3 sugere assessoriav8.com.br; confirmar.",
+
+  "politicaPrivacidade": "",
+  "termosDeUso": "",
+  "_politica": "URL de cada página. A Política é obrigatória antes de publicar: o formulário coleta CPF e CNPJ (LGPD)."
+}

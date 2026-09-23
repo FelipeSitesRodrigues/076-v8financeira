@@ -1,0 +1,278 @@
+/* Quem somos e tecnologia. Não veio foto da sala de operações (combinado com
+   o Felipe em 2026-09-23): a peça central é o símbolo da V8, a única coisa 3D
+   da marca, com a luz de tela atrás. Quando a foto existir, ela entra no
+   lugar do símbolo (src/fotos.json, chave "marca"). */
+.quem {
+  padding: var(--secao) 0;
+  background: var(--preto);
+  overflow: clip;
+}
+
+.quem__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.quem__lead {
+  margin-top: 26px;
+  font-size: clamp(1.1875rem, 1rem + .5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--branco);
+}
+
+.quem__corpo {
+  display: grid;
+  gap: 14px;
+  max-width: 37rem;
+  margin-top: 16px;
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  color: var(--texto-2);
+}
+
+.quem__marca {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+}
+
+/* a luz verde atrás do logo, como no brand board */
+.quem__marca::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 249 164 / .2), rgb(0 144 72 / .08) 45%, transparent 72%);
+}
+
+/* anéis finos de painel em volta do símbolo */
+.quem__marca::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 86%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(0 144 72 / .2);
+}
+
+/* largura definida antes da imagem carregar: sem isso o <picture> centrado
+   no grid encolhe a zero, e a página cresce 170 px quando o símbolo chega
+   (as âncoras do menu paravam antes do alvo) */
+.quem__simbolo {
+  width: 100%;
+}
+
+.quem__simbolo-img {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------- inteligência */
+.quem__ia {
+  margin-top: clamp(64px, 6.5vw, 96px);
+}
+
+.ia {
+  --c: 22px;
+  --borda: rgb(0 144 72 / .5);
+  --fundo: linear-gradient(115deg, rgb(8 26 20 / .96), rgb(0 32 16 / .78));
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(28px, 4.5vw, 72px);
+  padding: clamp(28px, 3.6vw, 52px);
+}
+
+.ia__rotulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 .75rem/1.3 var(--fonte-mono);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.ia__titulo em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.ia__titulo {
+  margin-top: 0;
+  font: 400 clamp(1.5rem, 1rem + 1.2vw, 2.125rem)/1.1 var(--fonte-titulo);
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--branco);
+}
+
+.ia__texto p {
+  margin-top: 16px;
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--texto-2);
+}
+
+.ia__lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 26px 28px;
+}
+
+.ia__lista li {
+  display: grid;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linha-fraca);
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--branco);
+}
+
+.ia__lista .ic {
+  width: 30px;
+  height: 30px;
+  color: var(--agua);
+}
+
+/* -------------------------------------------------------- diferenciais */
+/* Um painel só, dividido em seis por fios internos: continua o mundo dos
+   painéis sem repetir a grade de cards dos serviços logo acima. */
+.diferenciais {
+  --c: 22px;
+  --fundo: rgb(8 26 20 / .72);
+  margin-top: 18px;
+}
+
+.diferenciais__grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.diferencial {
+  padding: 30px 32px 32px;
+}
+
+.diferencial:nth-child(n + 4) {
+  border-top: 1px solid var(--linha-fraca);
+}
+
+.diferencial:not(:nth-child(3n + 1)) {
+  border-left: 1px solid var(--linha-fraca);
+}
+
+.diferencial h4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 400 .9375rem/1.25 var(--fonte-titulo);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.diferencial .ic {
+  width: 24px;
+  height: 24px;
+  color: var(--mint);
+}
+
+.diferencial p {
+  margin-top: 12px;
+  font-size: .9375rem;
+  line-height: 1.58;
+  color: var(--texto-2);
+}
+
+/* no celular e no tablet: título, símbolo, texto (mesma ordem do hero) */
+@media (max-width: 1023px) {
+  .quem__grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .quem__texto {
+    display: contents;
+  }
+
+  .quem__texto .rotulo { order: 1; }
+  .quem__texto .titulo { order: 2; }
+  .quem__lead { order: 4; }
+  .quem__corpo { order: 5; }
+
+  .quem__marca {
+    order: 3;
+    width: 100%;
+    max-width: 420px;
+    margin: 36px auto 4px;
+  }
+
+  .ia {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diferenciais__grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .diferencial:nth-child(n) {
+    border-top: 0;
+    border-left: 0;
+  }
+
+  .diferencial:nth-child(n + 3) {
+    border-top: 1px solid var(--linha-fraca);
+  }
+
+  .diferencial:nth-child(2n) {
+    border-left: 1px solid var(--linha-fraca);
+  }
+}
+
+@media (max-width: 767px) {
+  .quem__marca {
+    max-width: 300px;
+  }
+
+  .ia__rotulo {
+    letter-spacing: .12em;
+  }
+
+  .ia__lista {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .ia__lista li {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+  }
+
+  .ia__lista .ic {
+    width: 26px;
+    height: 26px;
+  }
+
+  .diferenciais__grade {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diferencial:nth-child(n) {
+    border-left: 0;
+    padding: 22px 20px 24px;
+  }
+
+  .diferencial:nth-child(n + 2) {
+    border-top: 1px solid var(--linha-fraca);
+  }
+}

@@ -1,0 +1,117 @@
+<section class="analise" id="analise-gratuita" aria-labelledby="analise-titulo">
+  <div class="analise__grade container">
+    <div class="analise__cabeca" data-revela-grupo>
+      <p class="rotulo" data-revela><b>07</b><i>/</i>Análise gratuita</p>
+      <h2 class="titulo analise__titulo" id="analise-titulo" data-revela>Descubra hoje <em>o que o banco vê</em> sobre você.</h2>
+      <p class="analise__texto" data-revela>A análise é gratuita e não te obriga a nada. Você recebe o diagnóstico, entende o que está travando seu crédito e decide depois se quer seguir.</p>
+    </div>
+
+    <div class="analise__video" data-revela="celular">
+      <?video autorizacao?>
+    </div>
+
+    <form class="form hud" id="form-analise" data-form data-revela="painel" novalidate aria-labelledby="analise-titulo" data-numero="{{whatsapp}}" data-email="{{email}}">
+      <div class="form__grade">
+        <div class="campo">
+          <label for="f-nome">Nome completo</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" enterkeyhint="next" required aria-describedby="f-nome-erro">
+          <p class="campo__erro" id="f-nome-erro"></p>
+        </div>
+
+        <div class="campo">
+          <label for="f-whats">WhatsApp (com DDD)</label>
+          <input id="f-whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(00) 00000-0000" enterkeyhint="next" required aria-describedby="f-whats-erro">
+          <p class="campo__erro" id="f-whats-erro"></p>
+        </div>
+
+        <div class="campo">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" enterkeyhint="next" required aria-describedby="f-email-erro">
+          <p class="campo__erro" id="f-email-erro"></p>
+        </div>
+
+        <div class="campo">
+          <label for="f-doc">CPF ou CNPJ</label>
+          <input id="f-doc" name="documento" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" required aria-describedby="f-doc-erro">
+          <p class="campo__erro" id="f-doc-erro"></p>
+        </div>
+
+        <fieldset class="campo campo--largo" aria-describedby="f-perfil-erro">
+          <legend>Você é</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="perfil" value="Pessoa física" required><span><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Pessoa física</span></label>
+            <label class="opcao"><input type="radio" name="perfil" value="Empresa"><span><svg class="ic" aria-hidden="true"><use href="#i-building"/></svg>Empresa</span></label>
+          </div>
+          <p class="campo__erro" id="f-perfil-erro"></p>
+        </fieldset>
+
+        <div class="campo campo--largo">
+          <label for="f-precisa">O que você precisa resolver</label>
+          <div class="selecao">
+            <select id="f-precisa" name="necessidade" required aria-describedby="f-precisa-erro">
+              <option value="">Escolha uma opção</option>
+              <option>Crédito negado</option>
+              <option>Apontamento interno</option>
+              <option>Capital de giro</option>
+              <option>Financiamento</option>
+              <option>Não sei ainda</option>
+            </select>
+            <svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </div>
+          <p class="campo__erro" id="f-precisa-erro"></p>
+        </div>
+
+        <div class="campo campo--largo">
+          <label for="f-situacao">Conte rapidamente sua situação <span class="campo__opcional">(opcional)</span></label>
+          <textarea id="f-situacao" name="situacao" rows="3" maxlength="800"></textarea>
+        </div>
+
+        <div class="campo campo--largo">
+          <label class="aceite">
+            <input type="checkbox" name="aceite" required aria-describedby="f-aceite-erro">
+            <span class="aceite__caixa" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span>
+            <span>Autorizo a V8 a entrar em contato e a tratar meus dados conforme a <?se politicaPrivacidade?><a class="link" href="{{politicaPrivacidade}}" target="_blank" rel="noopener">Política de Privacidade</a><?/se?><?nao politicaPrivacidade?>Política de Privacidade<?/nao?>.</span>
+          </label>
+          <p class="campo__erro" id="f-aceite-erro"></p>
+        </div>
+      </div>
+
+      <button class="btn btn--mint btn--g btn--largo form__enviar" type="submit">Quero minha análise gratuita <svg class="ic ic--seta" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+      <p class="form__micro"><span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>Resposta em até 1 dia útil</span> <i>·</i> <span>Seus dados não são compartilhados com terceiros</span></p>
+
+      <div class="form__sucesso" role="status" hidden>
+        <span class="form__sucesso-icone" aria-hidden="true"><svg class="ic"><use href="#i-circle-check"/></svg></span>
+        <p class="form__sucesso-titulo">Tudo certo, <span data-nome>você</span>.</p>
+        <p class="form__sucesso-texto" data-canal-texto>Abrimos o WhatsApp da V8 com os seus dados já escritos. É só tocar em enviar.</p>
+        <a class="link" href="#" data-reabrir target="_blank" rel="noopener">Não abriu? Toque aqui</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="downloads container" id="downloads">
+    <div class="downloads__cabeca" data-revela>
+      <h3 class="downloads__titulo"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>Downloads</h3>
+    </div>
+    <ul class="downloads__lista" data-revela-grupo>
+      <li class="doc hud" id="termo-autorizacao" data-revela>
+        <svg class="ic doc__icone" aria-hidden="true"><use href="#i-file-type-pdf"/></svg>
+        <h4 class="doc__titulo">Termo de Autorização para Consulta Financeira</h4>
+        <p class="doc__texto">Assine pelo gov.br e envie pra V8. É o que libera a análise gratuita.</p>
+        <a class="doc__apoio link" href="https://www.gov.br/pt-br/servicos/assinatura-eletronica" target="_blank" rel="noopener">Como assinar um documento no <span class="junto">gov.br<svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></a>
+        <a class="btn btn--linha btn--p doc__baixar" href="/docs/termo-de-autorizacao-v8.pdf" download data-evento="download_termo_autorizacao"><svg class="ic ic--desce" aria-hidden="true"><use href="#i-download"/></svg>Baixar PDF</a>
+      </li>
+      <li class="doc hud" id="termo-comercial" data-revela>
+        <svg class="ic doc__icone" aria-hidden="true"><use href="#i-file-type-pdf"/></svg>
+        <h4 class="doc__titulo">Termo de Condições Comerciais</h4>
+        <p class="doc__texto">Valor, modelo pós-pago, prazos e obrigações. Leia antes de contratar.</p>
+        <a class="btn btn--linha btn--p doc__baixar" href="/docs/termo-de-condicoes-comerciais-v8.pdf" download data-evento="download_termo_comercial"><svg class="ic ic--desce" aria-hidden="true"><use href="#i-download"/></svg>Baixar PDF</a>
+      </li>
+      <li class="doc hud" id="peticao" data-revela>
+        <svg class="ic doc__icone" aria-hidden="true"><use href="#i-file-type-docx"/></svg>
+        <h4 class="doc__titulo">Minuta de petição para correção de dados no SCR</h4>
+        <p class="doc__texto">Pra quem prefere entrar sozinho ou levar ao próprio advogado. Uso livre.</p>
+        <a class="btn btn--linha btn--p doc__baixar" href="/docs/minuta-peticao-correcao-scr.docx" download data-evento="download_peticao"><svg class="ic ic--desce" aria-hidden="true"><use href="#i-download"/></svg>Baixar DOCX</a>
+      </li>
+    </ul>
+  </div>
+</section>

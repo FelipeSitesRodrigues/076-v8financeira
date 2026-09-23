@@ -1,0 +1,232 @@
+{
+ "hero-desktop-1672.avif": {
+  "w": 1672,
+  "h": 941,
+  "kb": 52.3
+ },
+ "hero-desktop-1672.webp": {
+  "w": 1672,
+  "h": 941,
+  "kb": 81.1
+ },
+ "hero-desktop-1400.avif": {
+  "w": 1400,
+  "h": 788,
+  "kb": 41.5
+ },
+ "hero-desktop-1400.webp": {
+  "w": 1400,
+  "h": 788,
+  "kb": 64.9
+ },
+ "hero-desktop-1100.avif": {
+  "w": 1100,
+  "h": 619,
+  "kb": 30.2
+ },
+ "hero-desktop-1100.webp": {
+  "w": 1100,
+  "h": 619,
+  "kb": 46.7
+ },
+ "hero-mobile-941.avif": {
+  "w": 941,
+  "h": 1672,
+  "kb": 63.8
+ },
+ "hero-mobile-941.webp": {
+  "w": 941,
+  "h": 1672,
+  "kb": 107.5
+ },
+ "hero-mobile-780.avif": {
+  "w": 780,
+  "h": 1386,
+  "kb": 49.7
+ },
+ "hero-mobile-780.webp": {
+  "w": 780,
+  "h": 1386,
+  "kb": 84.4
+ },
+ "hero-mobile-600.avif": {
+  "w": 600,
+  "h": 1066,
+  "kb": 34.9
+ },
+ "hero-mobile-600.webp": {
+  "w": 600,
+  "h": 1066,
+  "kb": 59.3
+ },
+ "problema-1400.avif": {
+  "w": 1400,
+  "h": 788,
+  "kb": 33.5
+ },
+ "problema-1400.webp": {
+  "w": 1400,
+  "h": 788,
+  "kb": 52
+ },
+ "problema-1000.avif": {
+  "w": 1000,
+  "h": 563,
+  "kb": 21.3
+ },
+ "problema-1000.webp": {
+  "w": 1000,
+  "h": 563,
+  "kb": 31.9
+ },
+ "problema-700.avif": {
+  "w": 700,
+  "h": 394,
+  "kb": 12.5
+ },
+ "problema-700.webp": {
+  "w": 700,
+  "h": 394,
+  "kb": 18.7
+ },
+ "pagamento-941.avif": {
+  "w": 941,
+  "h": 1412,
+  "kb": 79.2
+ },
+ "pagamento-941.webp": {
+  "w": 941,
+  "h": 1412,
+  "kb": 132.7
+ },
+ "pagamento-720.avif": {
+  "w": 720,
+  "h": 1080,
+  "kb": 55.7
+ },
+ "pagamento-720.webp": {
+  "w": 720,
+  "h": 1080,
+  "kb": 95
+ },
+ "pagamento-540.avif": {
+  "w": 540,
+  "h": 810,
+  "kb": 38
+ },
+ "pagamento-540.webp": {
+  "w": 540,
+  "h": 810,
+  "kb": 62.8
+ },
+ "v8-simbolo-1000.avif": {
+  "w": 1000,
+  "h": 707,
+  "kb": 60.3
+ },
+ "v8-simbolo-1000.webp": {
+  "w": 1000,
+  "h": 707,
+  "kb": 119.1
+ },
+ "v8-simbolo-640.avif": {
+  "w": 640,
+  "h": 452,
+  "kb": 32.5
+ },
+ "v8-simbolo-640.webp": {
+  "w": 640,
+  "h": 452,
+  "kb": 60.6
+ },
+ "v8-simbolo-360.avif": {
+  "w": 360,
+  "h": 254,
+  "kb": 14.9
+ },
+ "v8-simbolo-360.webp": {
+  "w": 360,
+  "h": 254,
+  "kb": 26.7
+ },
+ "v8-simbolo-180.avif": {
+  "w": 180,
+  "h": 127,
+  "kb": 6.9
+ },
+ "v8-simbolo-180.webp": {
+  "w": 180,
+  "h": 127,
+  "kb": 10.6
+ },
+ "v8-simbolo-120.avif": {
+  "w": 120,
+  "h": 85,
+  "kb": 4.3
+ },
+ "v8-simbolo-120.webp": {
+  "w": 120,
+  "h": 85,
+  "kb": 6.3
+ },
+ "capa-filme-576.avif": {
+  "w": 576,
+  "h": 1024,
+  "kb": 19.6
+ },
+ "capa-filme-576.webp": {
+  "w": 576,
+  "h": 1024,
+  "kb": 24.8
+ },
+ "capa-filme-400.avif": {
+  "w": 400,
+  "h": 711,
+  "kb": 12.4
+ },
+ "capa-filme-400.webp": {
+  "w": 400,
+  "h": 711,
+  "kb": 15.8
+ },
+ "capa-apontamento-576.avif": {
+  "w": 576,
+  "h": 1024,
+  "kb": 19.1
+ },
+ "capa-apontamento-576.webp": {
+  "w": 576,
+  "h": 1024,
+  "kb": 24.4
+ },
+ "capa-apontamento-400.avif": {
+  "w": 400,
+  "h": 711,
+  "kb": 12.6
+ },
+ "capa-apontamento-400.webp": {
+  "w": 400,
+  "h": 711,
+  "kb": 16.5
+ },
+ "capa-autorizacao-576.avif": {
+  "w": 576,
+  "h": 1024,
+  "kb": 24
+ },
+ "capa-autorizacao-576.webp": {
+  "w": 576,
+  "h": 1024,
+  "kb": 26.9
+ },
+ "capa-autorizacao-400.avif": {
+  "w": 400,
+  "h": 711,
+  "kb": 16
+ },
+ "capa-autorizacao-400.webp": {
+  "w": 400,
+  "h": 711,
+  "kb": 22.9
+ }
+}

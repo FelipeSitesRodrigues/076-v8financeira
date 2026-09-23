@@ -1,0 +1,261 @@
+/* Header fixo. Translúcido sobre o hero; ao rolar, o fundo fecha um pouco e
+   a linha de baixo acende. Nada de mudar altura: só cor, opacidade e borda. */
+.topo {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-topo);
+  height: var(--topo-h);
+  background: rgb(2 13 9 / .55);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgb(0 96 60 / .45);
+  transition: background-color 400ms var(--ease), border-color 400ms var(--ease), box-shadow 400ms var(--ease);
+}
+
+.topo.rolou {
+  background: rgb(2 13 9 / .86);
+  border-color: rgb(0 144 72 / .5);
+  box-shadow: 0 12px 30px -24px rgb(0 0 0 / .9);
+}
+
+/* a linha mint de baixo acende da esquerda pra direita ao rolar */
+.topo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mint-55) 30%, var(--mint-55) 70%, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--ease);
+}
+
+.topo.rolou::after {
+  transform: scaleX(1);
+}
+
+.topo__barra {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.topo__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  border-radius: var(--raio);
+}
+
+.topo__simbolo {
+  width: 56px;
+  height: auto;
+}
+
+.topo__nome {
+  font: 600 .6875rem/1.3 var(--fonte-corpo);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.topo__nav {
+  margin-left: auto;
+}
+
+.topo__nav ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.45vw, 26px);
+}
+
+.topo__nav a {
+  position: relative;
+  display: block;
+  padding: 10px 0;
+  font: 600 .71875rem/1 var(--fonte-corpo);
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--cromo-claro);
+  transition: color var(--t-micro) var(--ease);
+}
+
+.topo__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: var(--mint);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.topo__nav a:hover,
+.topo__nav a.ativo {
+  color: var(--mint);
+}
+
+.topo__nav a:hover::after,
+.topo__nav a.ativo::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.topo__cta {
+  flex: none;
+  margin-left: 6px;
+}
+
+.topo__hamb {
+  display: none;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  margin-right: -8px;
+  border-radius: var(--raio);
+  flex: none;
+}
+
+.topo__hamb span {
+  position: absolute;
+  left: 11px;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mint);
+  transition: transform 320ms var(--ease), opacity 200ms var(--ease);
+}
+
+.topo__hamb span:nth-child(1) { top: 15px; }
+.topo__hamb span:nth-child(2) { top: 22px; }
+.topo__hamb span:nth-child(3) { top: 29px; }
+
+.topo__hamb[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.topo__hamb[aria-expanded='true'] span:nth-child(2) { opacity: 0; transform: scaleX(.3); }
+.topo__hamb[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* entre 1180 e 1399 o nome por extenso não cabe junto do menu inteiro:
+   fica só o símbolo, que já é a marca */
+@media (max-width: 1399px) {
+  .topo__nome {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------ menu celular */
+@media (max-width: 1179px) {
+  .topo__nav {
+    display: none;
+  }
+
+  .topo__cta {
+    margin-left: auto;
+  }
+
+  .topo__hamb {
+    display: block;
+  }
+
+  .topo__nome {
+    display: block;
+  }
+}
+
+@media (max-width: 599px) {
+  .topo__cta {
+    display: none;
+  }
+
+  .topo__hamb {
+    margin-left: auto;
+  }
+
+  .topo__simbolo {
+    width: 50px;
+  }
+
+  .topo__nome {
+    font-size: .625rem;
+  }
+}
+
+.menu-celular {
+  position: fixed;
+  top: var(--topo-h);
+  left: 0;
+  right: 0;
+  height: calc(100dvh - var(--topo-h));
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 20px var(--gutter) calc(28px + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgb(2 13 9 / .97);
+  animation: menu-abre 420ms var(--ease) both;
+}
+
+.menu-celular__nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 17px 2px;
+  border-bottom: 1px solid rgb(0 96 60 / .5);
+  font: 400 1.0625rem/1.2 var(--fonte-titulo);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--branco);
+  transition: color var(--t-micro) var(--ease);
+}
+
+.menu-celular__nav a .ic {
+  width: 20px;
+  height: 20px;
+  color: var(--mint);
+}
+
+.menu-celular__nav a:hover,
+.menu-celular__nav a:focus-visible {
+  color: var(--mint);
+}
+
+.menu-celular__nav li {
+  animation: menu-item 520ms var(--ease) both;
+  animation-delay: calc(60ms + var(--i, 0) * 40ms);
+}
+
+.menu-celular__acoes {
+  display: grid;
+  gap: 12px;
+  animation: menu-item 520ms var(--ease) both;
+  animation-delay: 340ms;
+}
+
+@keyframes menu-abre {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

@@ -1,0 +1,36 @@
+<section class="pagamento" id="pagamentos" aria-labelledby="pagamento-titulo">
+  <div class="pagamento__grade container">
+    <div class="pagamento__cena" data-revela="foto">
+      <?foto pagamento?>
+    </div>
+
+    <div class="pagamento__painel hud" data-revela-grupo>
+      <p class="rotulo" data-revela><b>05</b><i>/</i>Pagamentos</p>
+      <h2 class="titulo pagamento__titulo" id="pagamento-titulo" data-revela>Primeiro o resultado. <em>Depois o valor.</em></h2>
+
+      <p class="preco" data-revela="preco">
+        <span class="sr-only">R$ 2.850,00</span><span class="preco__moeda" aria-hidden="true">R$</span><span class="preco__valor" aria-hidden="true">2.850</span><span class="preco__centavos" aria-hidden="true">,00</span>
+      </p>
+      <p class="pagamento__texto" data-revela>Valor do serviço, cobrado uma única vez e só depois que o crédito for liberado. Não existe entrada, taxa de abertura nem mensalidade.</p>
+
+      <ul class="etiquetas" aria-label="Sem custo antes do resultado">
+        <li data-revela style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem entrada</li>
+        <li data-revela style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem taxa</li>
+        <li data-revela style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Sem mensalidade</li>
+      </ul>
+
+      <ul class="formas" data-revela aria-label="Formas de pagamento">
+        <li><span class="formas__icone" aria-hidden="true"><svg class="ic"><use href="#i-qrcode"/></svg></span><strong>PIX</strong><span>à vista</span></li>
+        <li><span class="formas__icone" aria-hidden="true"><svg class="ic"><use href="#i-credit-card"/></svg></span><strong>Cartão de crédito</strong><span>em até 3x sem juros</span></li>
+        <li><span class="formas__icone" aria-hidden="true"><svg class="ic"><use href="#i-barcode"/></svg></span><strong>Boleto</strong><span>1 + 2 parcelas</span></li>
+      </ul>
+
+      <p class="pagamento__nota" data-revela>A forma escolhida fica registrada no contrato de prestação de serviço. Nota fiscal emitida como consultoria financeira, no nome do contratante.</p>
+
+      <div class="pagamento__ctas" data-revela>
+        <a class="btn btn--linha" href="/docs/termo-de-condicoes-comerciais-v8.pdf" download data-evento="download_termos_pagamento"><svg class="ic ic--desce" aria-hidden="true"><use href="#i-file-download"/></svg> Baixar os termos comerciais</a>
+        <a class="btn btn--mint" href="{{wpp|Olá! Vim pelo site e gostaria de entender as *condições de pagamento*.}}" target="_blank" rel="noopener" data-evento="whatsapp_pagamento"><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg> Tirar dúvida no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>

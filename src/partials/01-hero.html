@@ -1,0 +1,42 @@
+<section class="hero" id="inicio" aria-labelledby="hero-titulo">
+  <?foto hero?>
+  <div class="hero__veu" aria-hidden="true"></div>
+  <div class="hero__piso" aria-hidden="true"></div>
+  <svg class="hero__linha" viewBox="0 0 300 172" aria-hidden="true" focusable="false">
+    <path class="hero__linha-halo" d="M2 170L298 2" pathLength="1"/>
+    <path class="hero__linha-traco" d="M2 170L298 2" pathLength="1"/>
+    <circle class="hero__no-luz" cx="185.5" cy="65.8" r="12"/>
+    <circle class="hero__no" cx="123.4" cy="101.1" r="3.6"/>
+    <circle class="hero__no hero__no--forte" cx="185.5" cy="65.8" r="4.8"/>
+  </svg>
+
+  <div class="hero__conteudo container">
+    <p class="rotulo hero__rotulo">Apontamento interno <i>·</i> Rating <i>·</i> Score</p>
+
+    <h1 class="hero__titulo" id="hero-titulo">
+      <span class="linha" style="--i:0"><span>Você só paga</span></span>
+      <span class="linha" style="--i:1"><span>depois que</span></span>
+      <span class="linha linha--mint" style="--i:2"><span>o crédito</span></span>
+      <span class="linha linha--mint" style="--i:3"><span>sair.</span></span>
+    </h1>
+
+    <p class="hero__sub">A V8 analisa, contesta e corrige o apontamento interno que trava sua análise de crédito no banco. Sem entrada, sem taxa e sem mensalidade. Se o crédito não sair, você não paga nada.</p>
+
+    <div class="hero__ctas">
+      <a class="btn btn--mint btn--g" href="#analise-gratuita" data-evento="cta_hero_analise">Fazer minha análise gratuita <svg class="ic ic--seta" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn--linha btn--g" href="{{wpp|Olá! Vim pelo site da V8 e quero falar com um especialista sobre meu crédito.}}" target="_blank" rel="noopener" data-evento="whatsapp_hero"><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg> Falar com um especialista</a>
+    </div>
+
+    <p class="hero__apoio"><span>Análise sem compromisso</span> <i>·</i> <span>Atendimento em todo o Brasil</span> <i>·</i> <span>Você não paga nada pra descobrir</span></p>
+  </div>
+
+  <div class="hero__selos container">
+    <ul class="selos hud" aria-label="Garantias da V8">
+      <li style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-file-pencil"/></svg><span>Pagamento<br>só no final</span></li>
+      <li style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>Até 45 dias</span></li>
+      <li style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-brasil"/></svg><span>Brasil inteiro</span></li>
+      <li style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-file-text"/></svg><span>Contrato aberto</span></li>
+      <li style="--i:4"><svg class="ic" aria-hidden="true"><use href="#i-shield-check"/></svg><span>Dados protegidos<br>LGPD</span></li>
+    </ul>
+  </div>
+</section>

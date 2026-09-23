@@ -1,0 +1,223 @@
+/* Pagamento: a foto fecha a história começada no problema (agora é a
+   conquista), o painel mostra o preço em mono com o peso de dado bancário. */
+.pagamento {
+  position: relative;
+  padding: var(--secao) 0;
+  background: var(--carvao);
+  overflow: clip;
+}
+
+.pagamento::before {
+  content: '';
+  position: absolute;
+  left: -12%;
+  bottom: -30%;
+  width: 60vw;
+  aspect-ratio: 1.4;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 249 164 / .1), transparent);
+  pointer-events: none;
+}
+
+.pagamento__grade {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: stretch;
+  gap: clamp(24px, 3vw, 40px);
+}
+
+/* a foto mantém a proporção dela e só perde céu em cima: nunca estica
+   pra altura da coluna (ver memória foto-paisagem-altura-da-secao) */
+.pagamento__cena {
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  background: var(--preto);
+}
+
+.pagamento__foto {
+  position: absolute;
+  inset: 0;
+}
+
+.pagamento__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 60%;
+}
+
+/* luz verde da tela subindo da base da foto, que liga a foto ao painel */
+.pagamento__cena::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(2 13 9 / .55), transparent 36%);
+  pointer-events: none;
+}
+
+.pagamento__painel {
+  --c: 22px;
+  --borda: rgb(0 144 72 / .55);
+  --fundo: linear-gradient(170deg, rgb(2 13 9 / .92), rgb(8 26 20 / .96));
+  padding: clamp(28px, 3.4vw, 52px);
+}
+
+.pagamento__titulo {
+  font-size: clamp(1.9rem, 1rem + 2vw, 2.75rem);
+}
+
+.preco {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 28px;
+  font-family: var(--fonte-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: .9;
+  color: var(--mint);
+}
+
+.preco__moeda {
+  margin: .5em .35em 0 0;
+  font-size: clamp(1.125rem, .9rem + .6vw, 1.5rem);
+  color: var(--agua);
+}
+
+.preco__valor {
+  font-size: clamp(3.9rem, 2rem + 5vw, 6.25rem);
+  letter-spacing: -.04em;
+  text-shadow: 0 0 40px rgb(0 249 164 / .25);
+}
+
+.preco__centavos {
+  margin-top: .45em;
+  font-size: clamp(1.125rem, .9rem + .6vw, 1.5rem);
+  color: var(--agua);
+}
+
+.pagamento__texto {
+  margin-top: 18px;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--cromo-claro);
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.etiquetas li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px 9px 11px;
+  border: 1px solid rgb(0 249 164 / .38);
+  border-radius: var(--raio);
+  background: var(--mint-08);
+  font: 500 .75rem/1 var(--fonte-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.etiquetas .ic {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.4;
+  color: var(--mint);
+}
+
+.formas {
+  display: grid;
+  margin-top: 30px;
+}
+
+.formas li {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--linha-fraca);
+  font-size: 1rem;
+}
+
+.formas li:last-child {
+  border-bottom: 1px solid var(--linha-fraca);
+}
+
+.formas__icone {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--raio-caixa);
+  border: 1px solid var(--linha);
+  color: var(--agua);
+}
+
+.formas__icone .ic {
+  width: 22px;
+  height: 22px;
+}
+
+.formas strong {
+  font-weight: 600;
+  color: var(--branco);
+}
+
+.formas li > span:last-child {
+  color: var(--texto-2);
+}
+
+.pagamento__nota {
+  margin-top: 18px;
+  font-size: .875rem;
+  line-height: 1.55;
+  color: var(--cinza);
+}
+
+.pagamento__ctas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+@media (max-width: 1023px) {
+  .pagamento__grade {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pagamento__cena {
+    aspect-ratio: 4 / 5;
+    max-height: 640px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pagamento__cena {
+    aspect-ratio: 16 / 11;
+  }
+
+  .pagamento__img {
+    object-position: 55% 58%;
+  }
+}
+
+@media (max-width: 767px) {
+  .formas li {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 14px;
+  }
+
+  .formas__icone {
+    grid-row: span 2;
+  }
+}

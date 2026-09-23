@@ -1,0 +1,118 @@
+/* Filme 01, logo depois do hero (pedido do Augusto: o vídeo na página
+   principal). Celular à esquerda com a luz de tela subindo por trás, a
+   pergunta à direita. No celular: pergunta, vídeo, texto. */
+.filme {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(76px, 7.5vw, 116px) 0 clamp(64px, 6vw, 96px);
+  background: var(--preto);
+  overflow: clip;
+}
+
+/* luz de tela: sobe da base, atrás do celular */
+.filme::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -38%;
+  width: min(900px, 120vw);
+  aspect-ratio: 1.6;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 249 164 / .14), rgb(0 144 72 / .07) 50%, transparent);
+  transform: translateX(-78%);
+  pointer-events: none;
+}
+
+.filme__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 104px);
+}
+
+.filme__midia {
+  display: grid;
+  justify-items: end;
+  padding-right: clamp(0px, 3vw, 48px);
+}
+
+.filme .celular {
+  --w: clamp(240px, 21vw, 292px);
+}
+
+.filme__titulo {
+  margin-top: 0;
+  font-size: clamp(2.1rem, 1rem + 2.7vw, 3.25rem);
+}
+
+.filme__lead {
+  margin-top: 26px;
+  max-width: 34rem;
+  font-size: clamp(1.125rem, 1rem + .35vw, 1.3125rem);
+  line-height: 1.5;
+  color: var(--branco);
+  text-wrap: pretty;
+}
+
+.filme__apoio {
+  margin-top: 16px;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--texto-2);
+}
+
+@media (max-width: 767px) {
+  .filme__grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .filme__texto {
+    display: contents;
+  }
+
+  .filme__grade > *,
+  .filme__texto > * {
+    grid-column: 1;
+  }
+
+  .filme__titulo { grid-row: 2; }
+
+  .filme__midia {
+    grid-row: 3;
+    justify-items: center;
+    padding-right: 0;
+    margin-top: 34px;
+  }
+
+  .filme__lead {
+    grid-row: 4;
+    margin-top: 34px;
+  }
+
+  .filme__apoio { grid-row: 5; }
+
+  .filme .celular {
+    --w: min(264px, 72vw);
+  }
+
+  .filme::before {
+    bottom: auto;
+    top: 18%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .filme__grade {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: 40px;
+  }
+
+  .filme__midia {
+    justify-items: center;
+    padding-right: 0;
+  }
+}

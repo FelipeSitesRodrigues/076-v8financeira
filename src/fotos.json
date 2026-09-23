@@ -1,0 +1,43 @@
+{
+  "_leia": "Cada <?foto chave?> dos partials vira um <picture> a partir daqui. larguras = arquivos gerados por scripts/processar-imagens.mjs. sizes = largura em que a foto aparece no layout.",
+
+  "hero": {
+    "fontes": [
+      { "media": "(max-width: 767px)", "base": "hero-mobile", "larguras": [600, 780, 941], "sizes": "100vw" }
+    ],
+    "base": "hero-desktop",
+    "larguras": [1100, 1400, 1672],
+    "sizes": "100vw",
+    "alt": "Família comemorando à noite, o pai erguendo um cartão de crédito, com a casa nova e o carro ao fundo",
+    "picture": "hero__foto",
+    "classe": "hero__img",
+    "prioridade": true
+  },
+
+  "problema": {
+    "base": "problema",
+    "larguras": [700, 1000, 1400],
+    "sizes": "(min-width: 1024px) 66vw, 100vw",
+    "alt": "Homem de costas, com as mãos na cabeça, diante do notebook que mostra crédito negado pelo banco",
+    "picture": "problema__foto",
+    "classe": "problema__img"
+  },
+
+  "pagamento": {
+    "base": "pagamento",
+    "larguras": [540, 720, 941],
+    "sizes": "(min-width: 1024px) 40vw, 100vw",
+    "alt": "Casal abraçado olhando a casa nova e o carro na garagem, ao anoitecer",
+    "picture": "pagamento__foto",
+    "classe": "pagamento__img"
+  },
+
+  "marca": {
+    "base": "v8-simbolo",
+    "larguras": [360, 640, 1000],
+    "sizes": "(min-width: 1024px) 34vw, 70vw",
+    "alt": "",
+    "picture": "quem__simbolo",
+    "classe": "quem__simbolo-img"
+  }
+}

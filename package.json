@@ -1,0 +1,20 @@
+{
+  "name": "076-v8-consultoria",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site da V8 Consultoria e Assessoria Financeira. HTML, CSS e JS estatico, sem dependencia em tempo de execucao.",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "imagens": "node scripts/processar-imagens.mjs",
+    "fontes": "node scripts/baixar-fontes.mjs",
+    "midia": "node scripts/copiar-midia.mjs"
+  },
+  "devDependencies": {
+    "@tabler/icons": "^3.48.0",
+    "lighthouse": "^12.8.2",
+    "puppeteer-core": "^25.11.0",
+    "sharp": "^0.35.4"
+  }
+}

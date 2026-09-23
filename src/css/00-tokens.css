@@ -1,0 +1,74 @@
+/* Tokens da V8. Paleta amostrada do arquivo do logo (ver memoria.md do 076).
+   Nenhum HEX fora daqui: os componentes usam só estas variáveis. */
+:root {
+  --mint: #00f9a4;          /* acento único: CTA, nós, número em alta */
+  --agua: #80efce;          /* ícones, linhas de dado, detalhe fino */
+  --cromo: #91d3be;         /* texto de apoio sobre escuro */
+  --cromo-claro: #e6f4f0;   /* rótulos e links */
+  --verde: #009048;         /* bordas, estados */
+  --verde-escuro: #00603c;  /* borda dos painéis, profundidade */
+  --abissal: #002010;
+  --preto: #020d09;         /* fundo principal */
+  --carvao: #081a14;        /* seções alternadas */
+  --branco: #f0f7f4;        /* texto principal */
+  --cinza: #7e9a90;         /* texto miúdo */
+  /* texto corrido de apoio: o cromo claro sobre o preto, quase neutro, como
+     no mockup. O verde-água fica pra ícone e detalhe, e o mint segue sozinho
+     como acento */
+  --texto-2: color-mix(in srgb, var(--cromo-claro) 80%, var(--preto));
+  --alerta: #ff4d5e;        /* SÓ na seção do problema e em erro de formulário */
+
+  /* as mesmas cores com transparência */
+  --mint-08: rgb(0 249 164 / .08);
+  --mint-16: rgb(0 249 164 / .16);
+  --mint-30: rgb(0 249 164 / .3);
+  --mint-55: rgb(0 249 164 / .55);
+  --mint-claro: color-mix(in srgb, var(--mint) 78%, var(--branco));
+  --linha: rgb(0 144 72 / .45);
+  --linha-forte: rgb(0 144 72 / .8);
+  --linha-fraca: rgb(0 96 60 / .55);
+  --vidro: rgb(8 26 20 / .74);
+  --vidro-fundo: rgb(2 13 9 / .62);
+  --alerta-40: rgb(255 77 94 / .4);
+  --alerta-12: rgb(255 77 94 / .12);
+
+  --fonte-titulo: 'Archivo Black', 'Arial Black', 'Helvetica Neue', sans-serif;
+  --fonte-corpo: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fonte-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --container: 1320px;
+  --gutter: clamp(16px, 4.2vw, 60px);
+  --secao: clamp(80px, 8.4vw, 128px);
+  --topo-h: 76px;
+
+  /* canto: botão e campo quase retos, painel com chanfro, como no brand board */
+  --raio: 4px;
+  --raio-caixa: 8px;
+  --corte: 16px;
+
+  --sombra-mint: 0 12px 30px -14px rgb(0 249 164 / .6);
+  --sombra-painel: 0 24px 60px -30px rgb(0 0 0 / .8);
+
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --ease-suave: cubic-bezier(.33, 1, .68, 1);
+  --ease-inout: cubic-bezier(.65, 0, .35, 1);
+  --t-micro: 180ms;
+  --t-hover: 280ms;
+  --t-revela: 720ms;
+
+  /* camadas */
+  --z-flutuante: 40;
+  --z-topo: 50;
+  --z-menu: 49;
+}
+
+@media (max-width: 1179px) {
+  :root { --topo-h: 68px; }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --topo-h: 62px;
+    --corte: 12px;
+  }
+}

@@ -1,0 +1,470 @@
+/* Peças que se repetem pela página: ícone, rótulo de seção, título,
+   botões, painel HUD e o celular que toca os vídeos. */
+
+/* ------------------------------------------------------------------ ícone */
+.ic {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ic--cheio {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ----------------------------------------------------------------- rótulo */
+/* O rótulo numerado do brand board: número em mint, barra, nome. */
+.rotulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .2em .75em;
+  font: 500 .8125rem/1.3 var(--fonte-mono);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cromo-claro);
+}
+
+.rotulo b,
+.rotulo i {
+  font-weight: 500;
+  font-style: normal;
+  color: var(--mint);
+}
+
+.rotulo i {
+  opacity: .7;
+}
+
+/* ----------------------------------------------------------------- título */
+.titulo {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.15rem + 2.35vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--branco);
+}
+
+.titulo em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.rotulo + .titulo {
+  margin-top: 18px;
+}
+
+.texto-apoio {
+  color: var(--texto-2);
+}
+
+/* ----------------------------------------------------------------- botões */
+.btn {
+  --h: 56px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: var(--h);
+  padding: 0 26px;
+  border-radius: var(--raio);
+  font: 700 .8125rem/1.15 var(--fonte-corpo);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--t-hover) var(--ease),
+    color var(--t-hover) var(--ease),
+    box-shadow var(--t-hover) var(--ease),
+    transform var(--t-micro) var(--ease);
+}
+
+.btn .ic {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.btn--mint {
+  background: var(--mint);
+  color: var(--preto);
+  box-shadow: 0 0 0 1px var(--mint-55), var(--sombra-mint);
+}
+
+.btn--linha {
+  background: rgb(2 13 9 / .4);
+  color: var(--branco);
+  box-shadow: inset 0 0 0 1px var(--mint-55);
+}
+
+.btn--linha .ic {
+  color: var(--mint);
+}
+
+@media (hover: hover) {
+  .btn--mint:hover {
+    background: var(--mint-claro);
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px var(--mint), 0 16px 34px -14px rgb(0 249 164 / .75);
+  }
+
+  .btn--linha:hover {
+    background: var(--mint-08);
+    box-shadow: inset 0 0 0 1px var(--mint);
+    transform: translateY(-1px);
+  }
+
+  .btn:hover .ic--seta {
+    transform: translateX(4px);
+  }
+
+  .btn:hover .ic--desce {
+    transform: translateY(2px);
+  }
+}
+
+.btn:active {
+  transform: translateY(0) scale(.985);
+  transition-duration: 90ms;
+}
+
+.btn--g {
+  --h: 58px;
+  padding: 0 30px;
+}
+
+.btn--p {
+  --h: 46px;
+  padding: 0 18px;
+  font-size: .75rem;
+}
+
+.btn--largo {
+  width: 100%;
+}
+
+@media (max-width: 479px) {
+  .btn {
+    white-space: normal;
+    text-wrap: balance;
+    padding-inline: 18px;
+    letter-spacing: .05em;
+  }
+}
+
+/* -------------------------------------------------------------- painel HUD */
+/* Painel do brand board: fundo escuro, borda de 1 px, canto de cima à
+   direita cortado em diagonal (e, nos cards de serviço, o de baixo à
+   esquerda também). O recorte é clip-path; a borda, um ::before com a mesma
+   geometria, pra a diagonal também ganhar traço. */
+.hud {
+  --c0: 0px;
+  --c: var(--corte);
+  --c2: 0px;
+  --borda: var(--linha);
+  --diag: var(--borda);
+  --fundo: var(--vidro);
+  position: relative;
+  isolation: isolate;
+  background: var(--fundo);
+  clip-path: polygon(var(--c0) 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, var(--c2) 100%, 0 calc(100% - var(--c2)), 0 var(--c0));
+}
+
+/* Cada diagonal é um degradê de 1,3 px na caixa do canto, desenhado do lado
+   de dentro do recorte (o lado de fora o clip-path come). */
+.hud::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid var(--borda);
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1.3px), var(--diag) calc(50% - 1.3px) 50%, transparent 50%) right top / var(--c) var(--c) no-repeat border-box,
+    linear-gradient(to top right, transparent 50%, var(--diag) 50% calc(50% + 1.3px), transparent calc(50% + 1.3px)) left bottom / var(--c2) var(--c2) no-repeat border-box,
+    linear-gradient(to bottom right, transparent 50%, var(--diag) 50% calc(50% + 1.3px), transparent calc(50% + 1.3px)) left top / var(--c0) var(--c0) no-repeat border-box;
+  transition: border-color var(--t-hover) var(--ease);
+}
+
+.hud--duplo {
+  --c2: var(--corte);
+}
+
+/* ----------------------------------------------------------- celular/vídeo */
+/* Os vídeos do Augusto são verticais (9:16) e longos: entram num celular,
+   com capa estática e nada baixado até alguém apertar o play. */
+.celular {
+  --w: 280px;
+  width: var(--w);
+  max-width: 100%;
+  margin: 0;
+}
+
+.celular__aparelho {
+  position: relative;
+  padding: 7px;
+  border-radius: calc(var(--w) * .13);
+  background: linear-gradient(160deg, rgb(128 239 206 / .2), rgb(0 96 60 / .16) 40%, rgb(2 13 9 / .9));
+  box-shadow:
+    inset 0 0 0 1px rgb(128 239 206 / .28),
+    0 30px 70px -30px rgb(0 0 0 / .9),
+    0 0 60px -20px rgb(0 249 164 / .25);
+}
+
+.celular__tela {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9 / 16;
+  border-radius: calc(var(--w) * .11);
+  background: var(--preto);
+  isolation: isolate;
+}
+
+.celular__video,
+.celular__capa,
+.celular__capa img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.celular__capa {
+  z-index: 1;
+  transition: opacity 400ms var(--ease);
+}
+
+.celular__tela::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(2 13 9 / .5), transparent 22%, transparent 62%, rgb(2 13 9 / .88));
+  transition: opacity 400ms var(--ease);
+}
+
+.celular__ilha {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 3;
+  width: 30%;
+  height: 20px;
+  border-radius: 20px;
+  background: var(--preto);
+  box-shadow: inset 0 0 0 1px rgb(128 239 206 / .08);
+  transform: translateX(-50%);
+}
+
+.celular__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  color: var(--preto);
+  background: var(--mint);
+  box-shadow: 0 0 0 8px rgb(0 249 164 / .16), 0 14px 30px -10px rgb(0 0 0 / .7);
+  transform: translate(-50%, -50%);
+  transition: transform var(--t-hover) var(--ease), opacity 300ms var(--ease), box-shadow var(--t-hover) var(--ease);
+}
+
+.celular__play .ic {
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
+}
+
+@media (hover: hover) {
+  .celular__play:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+    box-shadow: 0 0 0 12px rgb(0 249 164 / .2), 0 14px 30px -10px rgb(0 0 0 / .7);
+  }
+}
+
+/* carregando: o anel gira em volta do play até o primeiro quadro chegar */
+.celular__play::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--mint);
+  opacity: 0;
+}
+
+.celular.carregando .celular__play::after {
+  opacity: 1;
+  animation: girar .8s linear infinite;
+}
+
+.celular__controles {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 6px 10px;
+  font: 500 .6875rem/1 var(--fonte-mono);
+  letter-spacing: .04em;
+  color: var(--cromo-claro);
+}
+
+.celular__faixa {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  --p: 0%;
+}
+
+.celular__faixa::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--mint) var(--p), rgb(240 247 244 / .25) var(--p));
+}
+
+.celular__faixa::-moz-range-track {
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--mint) var(--p), rgb(240 247 244 / .25) var(--p));
+}
+
+.celular__faixa::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--mint);
+  border: 0;
+}
+
+.celular__faixa::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--mint);
+  border: 0;
+}
+
+.celular__btn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--branco);
+  transition: color var(--t-micro) var(--ease), background-color var(--t-micro) var(--ease);
+}
+
+.celular__btn .ic {
+  width: 17px;
+  height: 17px;
+}
+
+@media (hover: hover) {
+  .celular__btn:hover {
+    color: var(--mint);
+    background: rgb(240 247 244 / .08);
+  }
+}
+
+.celular__tempo {
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.celular__lado {
+  display: flex;
+  gap: 2px;
+}
+
+/* parado: só a barra fina e a duração; os botões aparecem ao tocar */
+.celular:not(.iniciado) .celular__btn,
+.celular:not(.iniciado) .celular__faixa::-webkit-slider-thumb {
+  visibility: hidden;
+}
+
+.celular:not(.iniciado) .celular__faixa {
+  pointer-events: none;
+}
+
+.celular.iniciado .celular__capa {
+  opacity: 0;
+}
+
+.celular.tocando .celular__play {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(.8);
+}
+
+.celular.tocando .celular__tela::after {
+  opacity: .55;
+}
+
+.celular .i-pause,
+.celular.tocando .i-play,
+.celular .i-mudo,
+.celular.mudo .i-som {
+  display: none;
+}
+
+.celular.tocando .i-pause,
+.celular.mudo .i-mudo {
+  display: block;
+}
+
+.celular__legenda {
+  margin: 18px calc((var(--w) - 340px) / 2) 0;
+  display: block;
+  text-wrap: balance;
+  font: 500 .75rem/1.4 var(--fonte-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cromo);
+  text-align: center;
+}
+
+.celular__legenda .ic {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  color: var(--mint);
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}

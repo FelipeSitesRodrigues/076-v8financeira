@@ -1,0 +1,49 @@
+<section class="problema" id="apontamento-interno" aria-labelledby="problema-titulo">
+  <div class="problema__cena" data-revela="foto">
+    <?foto problema?>
+  </div>
+
+  <div class="problema__topo container">
+    <div class="problema__texto" data-revela-grupo>
+      <p class="rotulo" data-revela><b>01</b><i>/</i>O problema</p>
+      <h2 class="titulo problema__titulo" id="problema-titulo" data-revela>Existe um registro seu que <em>só o banco vê.</em></h2>
+      <div class="problema__corpo" data-revela>
+        <p>Você consulta seu CPF e está limpo. Nenhuma negativação, nenhum protesto, score bom no aplicativo. Mesmo assim o gerente olha a tela, faz aquela cara e diz que o sistema não liberou.</p>
+        <p>Não é implicância do gerente. É o <strong>apontamento interno</strong>: uma marcação que o próprio banco fez no seu cadastro e que não aparece em consulta pública nenhuma.</p>
+        <p>Pode ter vindo de um atraso antigo já pago, de uma renegociação registrada errado, de um valor lançado a mais no SCR, de uma operação encerrada que continua aberta no sistema, ou de um dado cadastral desatualizado.</p>
+        <p>Enquanto esse registro estiver ali, todo banco que consultar vai ver a mesma coisa. E todo banco vai dizer a mesma coisa.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="problema__base container">
+    <div class="painel hud painel--voce" data-revela="painel">
+      <h3 class="painel__titulo">O que você vê</h3>
+      <ul class="painel__lista">
+        <li style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-circle-check"/></svg>Nome limpo</li>
+        <li style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-circle-check"/></svg>Score alto no aplicativo</li>
+        <li style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-circle-check"/></svg>Nenhuma dívida em aberto</li>
+        <li style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-circle-check"/></svg>Nenhuma restrição pública</li>
+      </ul>
+    </div>
+
+    <div class="painel hud painel--banco" data-revela="painel">
+      <h3 class="painel__titulo">O que o banco vê</h3>
+      <ul class="painel__lista">
+        <li style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Apontamento interno ativo</li>
+        <li style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Rating rebaixado</li>
+        <li style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Operação registrada com erro no SCR</li>
+        <li style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Capacidade de pagamento subestimada</li>
+      </ul>
+    </div>
+
+    <div class="problema__video" data-revela="celular">
+      <?video apontamento?>
+    </div>
+
+    <div class="problema__ctas" data-revela-grupo>
+      <a class="btn btn--mint btn--g" href="{{wpp|Olá! Vim pelo site e quero entender se tenho *apontamento interno*.}}" target="_blank" rel="noopener" data-evento="whatsapp_problema" data-revela><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg> Falar com um especialista</a>
+      <a class="btn btn--linha btn--g" href="#peticao" data-evento="peticao_problema" data-revela><svg class="ic ic--desce" aria-hidden="true"><use href="#i-file-download"/></svg> Baixar a petição pronta</a>
+    </div>
+  </div>
+</section>

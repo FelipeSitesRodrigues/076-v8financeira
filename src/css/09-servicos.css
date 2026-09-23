@@ -1,0 +1,202 @@
+/* Serviços: grade 3 x 2 de painéis HUD com dois cantos chanfrados, a caixa
+   do ícone à esquerda e o botão de WhatsApp do próprio serviço. */
+.servicos {
+  position: relative;
+  padding: var(--secao) 0;
+  background: var(--preto);
+}
+
+.servicos__grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: clamp(36px, 4vw, 52px);
+}
+
+.servico {
+  --c: 18px;
+  --c2: 18px;
+  --diag: var(--mint-55);
+  --fundo: linear-gradient(160deg, rgb(8 26 20 / .95), rgb(2 13 9 / .9));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  /* o botão cabe ao lado do ícone só a partir de 1440; abaixo disso ele
+     desce e ocupa a largura do card, em vez de ser cortado pelo chanfro */
+  grid-template-areas:
+    'icone titulo'
+    'icone texto'
+    'botao botao';
+  /* o texto estica e o botão assenta no pé: botões da mesma linha alinhados */
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
+  column-gap: 22px;
+  padding: 30px 28px 30px 26px;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.servico__corpo {
+  display: contents;
+}
+
+.servico__icone { grid-area: icone; }
+.servico__titulo { grid-area: titulo; }
+.servico__corpo p { grid-area: texto; }
+
+.servico .btn--card {
+  grid-area: botao;
+  width: 100%;
+}
+
+@media (min-width: 1440px) {
+  .servico {
+    grid-template-areas:
+      'icone titulo'
+      'icone texto'
+      'icone botao';
+  }
+
+  .servico .btn--card {
+    width: auto;
+    justify-self: start;
+  }
+}
+
+/* brilho de tela que acende no hover, vindo de trás do ícone */
+.servico::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(120% 90% at 0% 0%, rgb(0 249 164 / .09), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--t-hover) var(--ease);
+  pointer-events: none;
+}
+
+.servico__icone {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 92px;
+  border-radius: var(--raio-caixa);
+  border: 1px solid var(--linha);
+  background: rgb(2 13 9 / .6);
+  color: var(--agua);
+  transition: border-color var(--t-hover) var(--ease), color var(--t-hover) var(--ease), transform var(--t-hover) var(--ease);
+}
+
+.servico__icone .ic {
+  width: 50px;
+  height: 50px;
+  stroke-width: 1.3;
+}
+
+.servico__titulo {
+  font: 400 1.0625rem/1.2 var(--fonte-titulo);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.servico__corpo p {
+  margin-top: 10px;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: var(--texto-2);
+}
+
+/* botão do card: contorno mint, texto mint, divisória antes da seta */
+.btn--card {
+  --h: 50px;
+  margin-top: 20px;
+  gap: 0;
+  padding: 0;
+  justify-content: flex-start;
+  color: var(--mint);
+  font-size: .75rem;
+}
+
+.btn--card > .ic:first-child {
+  width: 22px;
+  height: 22px;
+  margin: 0 12px 0 16px;
+}
+
+.btn--card span {
+  padding-right: 16px;
+}
+
+.btn__seta {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  width: 46px;
+  margin-left: auto;
+  border-left: 1px solid var(--mint-30);
+}
+
+.btn__seta .ic {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+@media (hover: hover) {
+  .servico:hover {
+    --borda: rgb(0 249 164 / .5);
+    transform: translateY(-3px);
+  }
+
+  .servico:hover::after {
+    opacity: 1;
+  }
+
+  .servico:hover .servico__icone {
+    border-color: var(--mint-55);
+    color: var(--mint);
+    transform: translateY(-1px);
+  }
+
+  .btn--card:hover .btn__seta .ic {
+    transform: translateX(3px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1179px) {
+  .servicos__grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .servicos__grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .servico {
+    --c: 14px;
+    --c2: 14px;
+    column-gap: 16px;
+    row-gap: 0;
+    padding: 22px 18px 22px 16px;
+  }
+
+  .servico__icone {
+    width: 64px;
+    height: 68px;
+  }
+
+  .servico__icone .ic {
+    width: 38px;
+    height: 38px;
+  }
+
+  .servico__titulo {
+    font-size: .9375rem;
+  }
+
+  .btn--card {
+    --h: 46px;
+  }
+}

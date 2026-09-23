@@ -1,0 +1,240 @@
+/* Movimento. Uma assinatura (a linha da virada se desenhando em "Como
+   funciona") e, no resto, entradas curtas de opacidade e transform, que não
+   custam layout. Tudo parte de um estado final visível: se o JS não rodar,
+   nada fica escondido (as regras de esconder só valem com .js no <html>). */
+
+/* ------------------------------------------------ entrada do hero (CSS) */
+.hero__titulo .linha > span {
+  animation: subir-linha 900ms var(--ease) both;
+  animation-delay: calc(140ms + var(--i, 0) * 90ms);
+}
+
+.hero__rotulo {
+  animation: surgir 700ms var(--ease) both 60ms;
+}
+
+.hero__sub {
+  animation: surgir 800ms var(--ease) both 520ms;
+}
+
+.hero__ctas {
+  animation: surgir 800ms var(--ease) both 620ms;
+}
+
+.hero__apoio {
+  animation: surgir 800ms var(--ease) both 720ms;
+}
+
+/* a foto "assenta": só escala, sem opacidade, pra não atrasar o LCP */
+.hero__img {
+  animation: assentar 1800ms var(--ease-suave) both;
+}
+
+.selos li {
+  animation: surgir 700ms var(--ease) both;
+  animation-delay: calc(820ms + var(--i, 0) * 70ms);
+}
+
+/* a subida da linha no hero se desenha depois do título e acende os nós */
+.hero__linha-traco,
+.hero__linha-halo {
+  animation: tracar 1300ms var(--ease-inout) both 700ms;
+}
+
+.hero__no,
+.hero__no-luz {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: acender 600ms var(--ease) both 1350ms;
+}
+
+.hero__no--forte,
+.hero__no-luz {
+  animation-delay: 1650ms;
+}
+
+@keyframes tracar {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes acender {
+  from {
+    opacity: 0;
+    transform: scale(.2);
+  }
+}
+
+@keyframes subir-linha {
+  from {
+    transform: translateY(108%);
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes assentar {
+  from {
+    transform: scale(1.06);
+  }
+}
+
+/* ---------------------------------------------------- revelar ao rolar */
+.js [data-revela] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity var(--t-revela) var(--ease),
+    transform calc(var(--t-revela) + 120ms) var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.js [data-revela='celular'] {
+  transform: translate3d(0, 40px, 0) scale(.96);
+  transition-duration: 900ms, 1100ms;
+}
+
+.js [data-revela='painel'] {
+  transform: translate3d(0, 30px, 0);
+}
+
+.js [data-revela='preco'] {
+  transform: translate3d(0, 18px, 0);
+}
+
+/* foto grande: aparece por opacidade e "assenta" por dentro */
+.js [data-revela='foto'] {
+  transform: none;
+  transition-duration: 1100ms;
+}
+
+.js [data-revela='foto'] img {
+  transform: scale(1.08);
+  transition: transform 1800ms var(--ease-suave);
+}
+
+.js [data-revela='foto'].visivel img {
+  transform: none;
+}
+
+.js [data-revela='marca'] {
+  transform: scale(.9);
+  transition-duration: 1200ms, 1600ms;
+}
+
+.js [data-revela].visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* itens dos painéis entram um a um depois do painel */
+.js .painel__lista li,
+.js .ia__lista li,
+.js .diferencial {
+  opacity: 0;
+  transform: translate3d(-10px, 0, 0);
+  transition: opacity 500ms var(--ease), transform 600ms var(--ease);
+  transition-delay: calc(320ms + var(--i, 0) * 90ms);
+}
+
+.js .painel.visivel .painel__lista li,
+.js .ia.visivel .ia__lista li,
+.js .diferenciais.visivel .diferencial {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------ a linha da virada */
+.js .como:not(.desenhada) .virada__linha,
+.js .como:not(.desenhada) .virada__halo {
+  stroke-dashoffset: 1;
+}
+
+.js .como:not(.desenhada) .virada__seta {
+  opacity: 0;
+}
+
+.js .passo .passo__no {
+  opacity: .0;
+  transform: scale(.3);
+}
+
+.js .passo .passo__num,
+.js .passo .passo__titulo,
+.js .passo p {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 520ms var(--ease), transform 640ms var(--ease);
+}
+
+.js .passo .passo__titulo { transition-delay: 70ms; }
+.js .passo p { transition-delay: 140ms; }
+
+.js .passo.aceso .passo__no,
+.js .passo.aceso .passo__num,
+.js .passo.aceso .passo__titulo,
+.js .passo.aceso p {
+  opacity: 1;
+  transform: none;
+}
+
+/* o nó 05 acende com um pulso só, quando a linha chega nele */
+.passo--final.aceso .passo__no {
+  animation: pulso-final 1100ms var(--ease) 1;
+}
+
+@keyframes pulso-final {
+  0% {
+    box-shadow: 0 0 0 7px var(--carvao), 0 0 0 10px rgb(0 249 164 / .28), 0 0 0 0 rgb(0 249 164 / .6);
+  }
+  60% {
+    box-shadow: 0 0 0 7px var(--carvao), 0 0 0 10px rgb(0 249 164 / .28), 0 0 0 26px rgb(0 249 164 / 0);
+  }
+}
+
+/* ---------------------------------------------------- movimento reduzido */
+/* Sem deslocamento, sem desenho, sem atraso: tudo já no estado final. A
+   troca de cor dos estados continua, só que instantânea. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .js [data-revela],
+  .js [data-revela] img,
+  .js .painel__lista li,
+  .js .ia__lista li,
+  .js .diferencial,
+  .js .passo .passo__no,
+  .js .passo .passo__num,
+  .js .passo .passo__titulo,
+  .js .passo p {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .como:not(.desenhada) .virada__linha,
+  .js .como:not(.desenhada) .virada__halo {
+    stroke-dashoffset: 0;
+  }
+
+  .js .como:not(.desenhada) .virada__seta {
+    opacity: 1;
+  }
+}

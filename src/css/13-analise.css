@@ -1,0 +1,561 @@
+/* Análise gratuita: a conversão principal. Sem a foto do escritório (não
+   veio), o fundo é a malha com a luz de tela subindo da base. Cabeçalho e
+   vídeo 3 à esquerda, formulário à direita, downloads embaixo. */
+.analise {
+  position: relative;
+  isolation: isolate;
+  padding: var(--secao) 0;
+  background: var(--preto);
+  overflow: clip;
+}
+
+.analise::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -10%;
+  width: 120vw;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 249 164 / .1), rgb(0 96 60 / .06) 45%, transparent 75%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.analise__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(36px, 5vw, 88px);
+  align-items: start;
+}
+
+.analise__cabeca {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.analise__titulo {
+  font-size: clamp(2rem, 1.05rem + 2.3vw, 2.95rem);
+}
+
+.analise__texto {
+  margin-top: 22px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--texto-2);
+}
+
+.analise__video {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  justify-items: center;
+  margin-top: 40px;
+}
+
+.analise__video .celular {
+  --w: clamp(220px, 18vw, 262px);
+}
+
+/* ------------------------------------------------------------ formulário */
+.form {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  --c: 22px;
+  --borda: rgb(0 144 72 / .55);
+  --fundo: linear-gradient(170deg, rgb(8 26 20 / .94), rgb(2 13 9 / .94));
+  padding: clamp(24px, 3vw, 44px);
+}
+
+.form__grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 18px;
+}
+
+.campo {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.campo--largo {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo legend {
+  padding: 0;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--cromo-claro);
+}
+
+.campo legend {
+  margin-bottom: 8px;
+}
+
+.campo__opcional {
+  font-weight: 400;
+  color: var(--cinza);
+}
+
+.campo input:not([type='radio']):not([type='checkbox']),
+.campo select,
+.campo textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1px solid rgb(0 144 72 / .45);
+  border-radius: var(--raio);
+  background: rgb(2 13 9 / .75);
+  color: var(--branco);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--t-micro) var(--ease), box-shadow var(--t-micro) var(--ease), background-color var(--t-micro) var(--ease);
+}
+
+.campo textarea {
+  min-height: 104px;
+  padding: 14px 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.campo ::placeholder {
+  color: var(--cinza);
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .campo input:not([type='radio']):not([type='checkbox']):hover,
+  .campo select:hover,
+  .campo textarea:hover {
+    border-color: rgb(0 144 72 / .8);
+  }
+}
+
+.campo input:not([type='radio']):not([type='checkbox']):focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible {
+  border-color: var(--mint);
+  background: rgb(2 13 9 / .95);
+  box-shadow: 0 0 0 3px var(--mint-16);
+}
+
+.selecao {
+  position: relative;
+}
+
+.selecao select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.selecao select:invalid {
+  color: var(--cinza);
+}
+
+.selecao option {
+  background: var(--carvao);
+  color: var(--branco);
+}
+
+.selecao .ic {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  color: var(--mint);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* pessoa física / empresa: dois botões de seleção */
+.opcoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.opcao {
+  position: relative;
+  cursor: pointer;
+}
+
+.opcao input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opcao span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 12px;
+  border: 1px solid rgb(0 144 72 / .45);
+  border-radius: var(--raio);
+  background: rgb(2 13 9 / .75);
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--cromo-claro);
+  transition: border-color var(--t-micro) var(--ease), background-color var(--t-micro) var(--ease), color var(--t-micro) var(--ease);
+}
+
+.opcao .ic {
+  width: 20px;
+  height: 20px;
+  color: var(--agua);
+}
+
+.opcao:hover span {
+  border-color: rgb(0 144 72 / .8);
+}
+
+.opcao input:checked + span {
+  border-color: var(--mint);
+  background: var(--mint-08);
+  color: var(--branco);
+  box-shadow: inset 0 0 0 1px var(--mint);
+}
+
+.opcao input:checked + span .ic {
+  color: var(--mint);
+}
+
+.opcao input:focus-visible + span {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+/* consentimento */
+.aceite {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  font-size: .875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: var(--texto-2) !important;
+  cursor: pointer;
+}
+
+.aceite input {
+  position: absolute;
+  opacity: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+
+.aceite__caixa {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border: 1px solid rgb(0 144 72 / .7);
+  border-radius: 3px;
+  background: rgb(2 13 9 / .75);
+  color: var(--preto);
+  transition: background-color var(--t-micro) var(--ease), border-color var(--t-micro) var(--ease);
+}
+
+.aceite__caixa .ic {
+  width: 15px;
+  height: 15px;
+  stroke-width: 3;
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity var(--t-micro) var(--ease), transform var(--t-micro) var(--ease);
+}
+
+.aceite input:checked + .aceite__caixa {
+  background: var(--mint);
+  border-color: var(--mint);
+}
+
+.aceite input:checked + .aceite__caixa .ic {
+  opacity: 1;
+  transform: none;
+}
+
+.aceite input:focus-visible + .aceite__caixa {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+/* erro: o vermelho aqui é só o de erro de formulário */
+.campo__erro {
+  min-height: 0;
+  font-size: .8125rem;
+  line-height: 1.4;
+  color: var(--alerta);
+}
+
+.campo__erro:empty {
+  display: none;
+}
+
+.campo.erro input:not([type='radio']):not([type='checkbox']),
+.campo.erro select,
+.campo.erro .opcao span,
+.campo.erro .aceite__caixa {
+  border-color: var(--alerta);
+}
+
+.campo.erro input:not([type='radio']):not([type='checkbox']):focus-visible {
+  box-shadow: 0 0 0 3px var(--alerta-12);
+}
+
+.campo.ok input:not([type='radio']):not([type='checkbox']) {
+  border-color: rgb(0 249 164 / .55);
+}
+
+.form__enviar {
+  margin-top: 26px;
+}
+
+.form__micro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin-top: 14px;
+  font-size: .8125rem;
+  line-height: 1.45;
+  color: var(--cinza);
+  text-align: center;
+}
+
+.form__micro span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form__micro .ic {
+  width: 16px;
+  height: 16px;
+  color: var(--agua);
+}
+
+.form__micro i {
+  font-style: normal;
+  color: var(--verde);
+}
+
+/* sucesso: o formulário dá lugar à confirmação, no mesmo painel */
+.form.enviado .form__grade,
+.form.enviado .form__enviar,
+.form.enviado .form__micro {
+  display: none;
+}
+
+.form__sucesso {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 40px 12px;
+  text-align: center;
+  animation: aparecer 520ms var(--ease) both;
+}
+
+.form__sucesso-icone .ic {
+  width: 56px;
+  height: 56px;
+  stroke-width: 1.3;
+  color: var(--mint);
+}
+
+.form__sucesso-titulo {
+  font: 400 1.5rem/1.2 var(--fonte-titulo);
+  text-transform: uppercase;
+  color: var(--branco);
+}
+
+.form__sucesso-texto {
+  max-width: 26rem;
+  color: var(--texto-2);
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* ------------------------------------------------------------- downloads */
+.downloads {
+  margin-top: clamp(64px, 7vw, 104px);
+  scroll-margin-top: calc(var(--topo-h) + 24px);
+}
+
+.downloads__cabeca {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.downloads__titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 500 .875rem/1.3 var(--fonte-mono);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  white-space: nowrap;
+}
+
+.downloads__titulo .ic {
+  width: 22px;
+  height: 22px;
+}
+
+/* a linha fina depois do título, até a borda */
+.downloads__cabeca::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--linha), transparent);
+}
+
+.downloads__lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.doc {
+  --c: 18px;
+  --fundo: rgb(8 26 20 / .8);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 16px;
+  padding: 26px 24px 24px;
+  scroll-margin-top: calc(var(--topo-h) + 24px);
+}
+
+.doc__icone {
+  grid-row: 1 / span 2;
+  width: 40px;
+  height: 40px;
+  stroke-width: 1.2;
+  color: var(--agua);
+}
+
+.doc__titulo {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--branco);
+}
+
+.doc__texto {
+  margin-top: 8px;
+  font-size: .9375rem;
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.doc__apoio {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 10px;
+  font-size: .875rem;
+}
+
+.doc__apoio .ic {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 4px;
+  vertical-align: -2px;
+}
+
+.doc__baixar {
+  grid-column: 2;
+  grid-row: 4;
+  justify-self: start;
+  margin-top: 18px;
+}
+
+/* quem chega pelo botão "baixar a petição pronta" vê o card acender */
+.doc:target::before {
+  animation: destacar 1.8s var(--ease) 1;
+}
+
+@keyframes destacar {
+  0%,
+  45% {
+    border-color: var(--mint);
+    box-shadow: inset 0 0 0 1px var(--mint), inset 0 0 48px rgb(0 249 164 / .14);
+  }
+}
+
+@media (max-width: 1023px) {
+  .analise__grade {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+  }
+
+  .analise__cabeca,
+  .analise__video,
+  .form {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .analise__video {
+    margin-top: 36px;
+  }
+
+  .form {
+    margin-top: 36px;
+  }
+
+  .downloads__lista {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form__grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .form {
+    --c: 16px;
+    padding: 22px 18px 24px;
+  }
+
+  .doc {
+    padding: 22px 18px 20px;
+  }
+
+  .form__micro i {
+    display: none;
+  }
+}

@@ -1,0 +1,59 @@
+/* Desempenho no celular. O primeiro layout da página inteira, com o texto
+   sendo moldado pela primeira vez, era a tarefa mais longa do carregamento.
+   Com content-visibility, o navegador só monta cada seção quando ela chega
+   perto da tela; só o hero, que aparece logo, fica de fora. Medido com a CPU
+   limitada 4x (como no Lighthouse): o layout do carregamento caiu de ~610 ms
+   pra ~240 ms no melhor caso.
+
+   A altura reservada é a do CONTEÚDO: o navegador soma o padding da seção por
+   cima. Os números abaixo são a altura medida no site pronto (390, 768 e
+   1440 px) menos o padding vertical de cada seção. Estimativa errada faz a
+   âncora do menu mirar longe; o JS confere e acerta no fim da rolagem, mas
+   quanto mais perto, menor o ajuste. O "auto" faz o navegador guardar a
+   altura de verdade depois da primeira vez. Mudou muito o tamanho de uma
+   seção? Atualizar o número dela aqui. */
+.filme,
+#apontamento-interno,
+#como-funciona,
+#servicos,
+#quem-somos,
+#pagamentos,
+#duvidas,
+#analise-gratuita,
+.rodape {
+  content-visibility: auto;
+}
+
+.filme { contain-intrinsic-size: auto 510px; }
+#apontamento-interno { contain-intrinsic-size: auto 1010px; }
+#como-funciona { contain-intrinsic-size: auto 600px; }
+#servicos { contain-intrinsic-size: auto 685px; }
+#quem-somos { contain-intrinsic-size: auto 1345px; }
+#pagamentos { contain-intrinsic-size: auto 980px; }
+#duvidas { contain-intrinsic-size: auto 725px; }
+#analise-gratuita { contain-intrinsic-size: auto 1215px; }
+.rodape { contain-intrinsic-size: auto 555px; }
+
+@media (max-width: 1023px) {
+  .filme { contain-intrinsic-size: auto 415px; }
+  #apontamento-interno { contain-intrinsic-size: auto 1740px; }
+  #como-funciona { contain-intrinsic-size: auto 1020px; }
+  #servicos { contain-intrinsic-size: auto 1150px; }
+  #quem-somos { contain-intrinsic-size: auto 2025px; }
+  #pagamentos { contain-intrinsic-size: auto 1275px; }
+  #duvidas { contain-intrinsic-size: auto 1010px; }
+  #analise-gratuita { contain-intrinsic-size: auto 2085px; }
+  .rodape { contain-intrinsic-size: auto 685px; }
+}
+
+@media (max-width: 767px) {
+  .filme { contain-intrinsic-size: auto 810px; }
+  #apontamento-interno { contain-intrinsic-size: auto 1955px; }
+  #como-funciona { contain-intrinsic-size: auto 1230px; }
+  #servicos { contain-intrinsic-size: auto 1705px; }
+  #quem-somos { contain-intrinsic-size: auto 2735px; }
+  #pagamentos { contain-intrinsic-size: auto 1515px; }
+  #duvidas { contain-intrinsic-size: auto 1170px; }
+  #analise-gratuita { contain-intrinsic-size: auto 2520px; }
+  .rodape { contain-intrinsic-size: auto 1075px; }
+}

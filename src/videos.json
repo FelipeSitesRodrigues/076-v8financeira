@@ -1,0 +1,28 @@
+{
+  "_leia": "Cada <?video chave?> dos partials vira o celular com o player. arquivo fica em assets/video (scripts/copiar-midia.mjs) e capa em assets/img (scripts/processar-imagens.mjs).",
+
+  "filme": {
+    "arquivo": "filme-credito-negado.mp4",
+    "capa": "capa-filme",
+    "duracao": "1:28",
+    "falado": "1 minuto e 28 segundos",
+    "titulo": "Filme da V8: do crédito negado ao relatório na mão"
+  },
+
+  "apontamento": {
+    "arquivo": "filme-apontamento-interno.mp4",
+    "capa": "capa-apontamento",
+    "duracao": "2:59",
+    "falado": "2 minutos e 59 segundos",
+    "titulo": "Vídeo: o que é o apontamento interno e por que ele trava seu crédito"
+  },
+
+  "autorizacao": {
+    "arquivo": "filme-autorizacao-scr.mp4",
+    "capa": "capa-autorizacao",
+    "duracao": "2:23",
+    "falado": "2 minutos e 23 segundos",
+    "titulo": "Vídeo: como funciona a autorização de consulta do SCR",
+    "legenda": "Assista: como funciona a autorização de consulta"
+  }
+}
