@@ -183,7 +183,11 @@ ok(e.antes === 'false' && e.depois === 'true' && e.h > 20, `abre com aria-expand
 
 // ---------------------------------------------------------------- formulário
 console.log('\nFORMULÁRIO')
-await pag.evaluate(() => document.querySelector('#analise-gratuita').scrollIntoView())
+// rolagem instantânea direto no botão: com a suave, o clique saía no meio do
+// caminho (desde que os termos entraram antes do formulário, ele fica longe
+// do topo da seção)
+await pag.evaluate(() => document.querySelector('.form__enviar').scrollIntoView({ block: 'center', behavior: 'instant' }))
+await espera(900)
 await pag.click('.form__enviar')
 e = await pag.evaluate(() => ({
   erros: [...document.querySelectorAll('.campo.erro')].length,

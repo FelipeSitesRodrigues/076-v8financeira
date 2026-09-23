@@ -126,8 +126,301 @@
   color: var(--alerta);
 }
 
+/* ---------------------------------------------------------------- alarme */
+/* Pedido do Augusto (2026-09-23): "o que o banco vê" piscando como uma
+   bomba, luz vermelha pulsando em alerta. Três peças no mesmo compasso: a
+   luz que vaza por fora, a borda e o fundo que acendem por dentro e os
+   ícones que batem. Mais a sirene do título, que solta ondas. Só opacity e
+   transform, pra não pesar no celular. A luz de fora mora no .alarme porque
+   o painel tem clip-path, que cortaria qualquer sombra dele mesmo. Com
+   movimento reduzido tudo fica aceso e parado. */
+.alarme {
+  position: relative;
+  display: grid;
+  align-self: stretch;
+}
+
+.alarme::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  box-shadow:
+    0 0 26px 2px rgb(255 77 94 / .55),
+    0 0 90px 12px rgb(255 77 94 / .22);
+  opacity: .55;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.painel--banco::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 1px solid var(--alerta);
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1.3px), var(--alerta) calc(50% - 1.3px) 50%, transparent 50%) right top / var(--c) var(--c) no-repeat border-box,
+    radial-gradient(120% 75% at 50% 0%, rgb(255 77 94 / .2), transparent 72%);
+  box-shadow: inset 0 0 34px rgb(255 77 94 / .28);
+  opacity: .6;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.painel--banco .painel__titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sirene {
+  position: relative;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--alerta);
+  box-shadow: 0 0 10px 2px rgb(255 77 94 / .75);
+}
+
+.sirene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--alerta);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* antes do painel entrar a luz fica apagada; acende junto com ele */
+.js .alarme::before,
+.js .painel--banco::after {
+  opacity: 0;
+}
+
+.sem-js .alarme::before,
+.alarme:has(.visivel)::before,
+.sem-js .painel--banco::after,
+.painel--banco.visivel::after {
+  opacity: .55;
+  animation: alarme-luz 1.2s var(--ease-suave) 1.1s infinite;
+}
+
+.sem-js .painel--banco .painel__lista .ic,
+.painel--banco.visivel .painel__lista .ic {
+  animation: alarme-icone 1.2s var(--ease-suave) 1.1s infinite;
+}
+
+.sem-js .sirene,
+.painel--banco.visivel .sirene {
+  animation: alarme-sirene 1.2s steps(1, end) 1.1s infinite;
+}
+
+.sem-js .sirene::after,
+.painel--banco.visivel .sirene::after {
+  animation: alarme-onda 1.2s cubic-bezier(.2, .6, .35, 1) 1.1s infinite;
+}
+
+/* bate forte e apaga devagar, como luz de bomba em filme */
+@keyframes alarme-luz {
+  0%,
+  100% { opacity: .22; }
+  10% { opacity: 1; }
+  45% { opacity: .38; }
+}
+
+@keyframes alarme-icone {
+  0%,
+  100% {
+    opacity: .6;
+    transform: scale(1);
+  }
+
+  10% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  45% {
+    opacity: .72;
+    transform: scale(1);
+  }
+}
+
+@keyframes alarme-sirene {
+  0% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
+@keyframes alarme-onda {
+  0% {
+    opacity: .9;
+    transform: scale(1);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(3.4);
+  }
+}
+
 .problema__video .celular {
   --w: clamp(190px, 14.2vw, 206px);
+}
+
+/* ----------------------------------------------------------------- bomba */
+/* O aviso que o Augusto rabiscou em cima do vídeo ("APONTA") e o Rafael
+   pediu "vermelho, chamativo, tipo uma bomba, piscando". Pisca no mesmo
+   compasso do painel do banco. width 0 + min-width 100%: ocupa a largura da
+   coluna do celular sem alargá-la. */
+.bomba {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 0;
+  min-width: 100%;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--alerta);
+  border-radius: var(--raio);
+  background: rgb(255 77 94 / .08);
+  font: 400 .875rem/1.25 var(--fonte-titulo);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--alerta);
+}
+
+.bomba::before,
+.bomba::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* a luz que vaza e o clarão por dentro */
+.bomba::before {
+  z-index: -2;
+  box-shadow:
+    0 0 22px 1px rgb(255 77 94 / .6),
+    0 0 64px 6px rgb(255 77 94 / .22);
+  opacity: .5;
+}
+
+.bomba::after {
+  z-index: -1;
+  background: rgb(255 77 94 / .2);
+  opacity: .4;
+}
+
+.js .bomba::before,
+.js .bomba::after {
+  opacity: 0;
+}
+
+.sem-js .bomba::before,
+.sem-js .bomba::after,
+.problema__video.visivel .bomba::before,
+.problema__video.visivel .bomba::after {
+  opacity: .5;
+  animation: alarme-luz 1.2s var(--ease-suave) 1.1s infinite;
+}
+
+.sem-js .bomba .sirene,
+.problema__video.visivel .bomba .sirene {
+  animation: alarme-sirene 1.2s steps(1, end) 1.1s infinite;
+}
+
+.sem-js .bomba .sirene::after,
+.problema__video.visivel .bomba .sirene::after {
+  animation: alarme-onda 1.2s cubic-bezier(.2, .6, .35, 1) 1.1s infinite;
+}
+
+/* ------------------------------------------ depois do vídeo: os termos */
+/* Pedido do Rafael: primeiro o vídeo, logo embaixo o termo pra assinar e o
+   de condições. É a versão curta dos cards de Downloads da análise. */
+.problema__depois {
+  display: grid;
+  gap: 22px;
+}
+
+.termos__titulo {
+  margin-bottom: 10px;
+  font: 500 .75rem/1.35 var(--fonte-mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cromo);
+}
+
+.termos__lista {
+  display: grid;
+  gap: 8px;
+}
+
+.termo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 10px 14px;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: rgb(8 26 20 / .72);
+  color: var(--branco);
+  text-decoration: none;
+  transition:
+    border-color var(--t-hover) var(--ease),
+    background-color var(--t-hover) var(--ease);
+}
+
+.termo__icone {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.3;
+  color: var(--agua);
+}
+
+.termo__texto b {
+  display: block;
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.termo__texto small {
+  display: block;
+  margin-top: 2px;
+  font-size: .8125rem;
+  line-height: 1.35;
+  color: var(--texto-2);
+}
+
+.termo__baixar {
+  width: 20px;
+  height: 20px;
+  color: var(--mint);
+  transition: transform var(--t-hover) var(--ease);
+}
+
+@media (hover: hover) {
+  .termo:hover {
+    border-color: var(--mint-55);
+    background-color: var(--mint-08);
+  }
+
+  .termo:hover .termo__baixar {
+    transform: translateY(2px);
+  }
 }
 
 .problema__ctas {
@@ -145,9 +438,11 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
   }
 
-  .problema__ctas {
+  .problema__depois {
     grid-column: 1 / -1;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 28px;
   }
 }
 
@@ -232,8 +527,25 @@
     margin-top: 0;
   }
 
+  .painel--banco .painel__titulo {
+    gap: 8px;
+  }
+
+  .sirene {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* os dois painéis ficam a 10 px um do outro: a luz de fora encolhe pra
+     não lavar o painel verde */
+  .alarme::before {
+    box-shadow:
+      0 0 18px 1px rgb(255 77 94 / .55),
+      0 0 56px 6px rgb(255 77 94 / .2);
+  }
+
   .problema__video,
-  .problema__ctas {
+  .problema__depois {
     grid-column: 1 / -1;
   }
 
@@ -245,8 +557,21 @@
     --w: min(248px, 68vw);
   }
 
-  .problema__ctas {
-    margin-top: 20px;
+  .problema__depois {
+    margin-top: 24px;
+  }
+
+  .bomba {
+    margin-bottom: 16px;
+  }
+}
+
+/* com os dois painéis lado a lado no celular, a sirene do título empurra o
+   "VÊ" pra outra linha: some ali, o painel continua piscando inteiro e a
+   bomba logo abaixo tem a dela */
+@media (max-width: 479px) {
+  .painel--banco .sirene {
+    display: none;
   }
 }
 

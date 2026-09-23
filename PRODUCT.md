@@ -24,7 +24,7 @@ Post-paid: the client pays R$ 2.850 only after the credit is released (PIX, card
 
 ## Operating Context
 
-The client (Augusto) works 100% digital, all of Brazil, CPF and CNPJ. Flow: sign the authorization term on gov.br, V8 queries Registrato/SCR, client receives the diagnosis, decides, signs the service contract, V8 contests within up to 45 days, client gets a completion document and 7 days to check, then pays. Documents offered for download: authorization term (PDF), commercial terms (PDF), SCR correction petition draft (DOCX).
+The client (Augusto) works 100% digital, all of Brazil, CPF and CNPJ. Flow: sign the authorization term on gov.br, V8 queries Registrato/SCR, client receives the diagnosis, decides, signs the service contract, V8 contests within up to 45 days, client gets a completion document and 7 days to check, then pays. Documents offered for download: authorization term (PDF) and commercial terms (PDF). The SCR petition draft was removed on 2026-09-23 at Augusto's request (pending a final answer, since Rafael asked for it after the terms).
 
 ## Capabilities and Constraints
 

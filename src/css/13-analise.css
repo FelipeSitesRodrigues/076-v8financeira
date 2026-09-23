@@ -1,6 +1,8 @@
 /* Análise gratuita: a conversão principal. Sem a foto do escritório (não
-   veio), o fundo é a malha com a luz de tela subindo da base. Cabeçalho e
-   vídeo 3 à esquerda, formulário à direita, downloads embaixo. */
+   veio), o fundo é a malha com a luz de tela subindo da base. À esquerda, na
+   ordem que o Rafael pediu (2026-09-23): cabeçalho, vídeo 3 (que explica o
+   termo de autorização) e os termos pra baixar; à direita, o formulário. No
+   celular a mesma ordem vira uma coluna só, com o formulário por último. */
 .analise {
   position: relative;
   isolation: isolate;
@@ -26,7 +28,7 @@
 .analise__grade {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   column-gap: clamp(36px, 5vw, 88px);
   align-items: start;
 }
@@ -62,7 +64,7 @@
 /* ------------------------------------------------------------ formulário */
 .form {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   --c: 22px;
   --borda: rgb(0 144 72 / .55);
   --fundo: linear-gradient(170deg, rgb(8 26 20 / .94), rgb(2 13 9 / .94));
@@ -404,7 +406,9 @@
 
 /* ------------------------------------------------------------- downloads */
 .downloads {
-  margin-top: clamp(64px, 7vw, 104px);
+  grid-column: 1;
+  grid-row: 3;
+  margin-top: 44px;
   scroll-margin-top: calc(var(--topo-h) + 24px);
 }
 
@@ -441,8 +445,17 @@
 
 .downloads__lista {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+/* a coluna da esquerda ficou mais alta que o formulário: com tela alta o
+   bastante pra ele caber inteiro, ele acompanha a rolagem */
+@media (min-width: 1024px) and (min-height: 880px) {
+  .form {
+    position: sticky;
+    top: calc(var(--topo-h) + 24px);
+  }
 }
 
 .doc {
@@ -500,19 +513,6 @@
   margin-top: 18px;
 }
 
-/* quem chega pelo botão "baixar a petição pronta" vê o card acender */
-.doc:target::before {
-  animation: destacar 1.8s var(--ease) 1;
-}
-
-@keyframes destacar {
-  0%,
-  45% {
-    border-color: var(--mint);
-    box-shadow: inset 0 0 0 1px var(--mint), inset 0 0 48px rgb(0 249 164 / .14);
-  }
-}
-
 @media (max-width: 1023px) {
   .analise__grade {
     grid-template-columns: minmax(0, 1fr);
@@ -521,6 +521,7 @@
 
   .analise__cabeca,
   .analise__video,
+  .downloads,
   .form {
     grid-column: 1;
     grid-row: auto;
@@ -530,13 +531,18 @@
     margin-top: 36px;
   }
 
-  .form {
+  .downloads {
     margin-top: 36px;
   }
 
+  .form {
+    margin-top: 36px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .downloads__lista {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

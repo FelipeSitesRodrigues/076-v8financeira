@@ -37,7 +37,6 @@ const COPIAS = [
   ['VÍDEOS QUE O AUGUSTO QUER NO SITE/VÍDEO 2 - PAGAMENTO POS PAGO.mp4', 'assets/video/filme-pagamento.mp4'],
   ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/TERMO DE AUTORIZAÇÃO PDF.pdf', 'docs/termo-de-autorizacao-v8.pdf'],
   ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/termo e contrato consultoria.pdf', 'docs/termo-de-condicoes-comerciais-v8.pdf'],
-  ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/Minuta_Peticao_Reanalise_Correcao_SCR_Credito.docx', 'docs/minuta-peticao-correcao-scr.docx'],
 ]
 
 for (const [origem, destino] of COPIAS) {

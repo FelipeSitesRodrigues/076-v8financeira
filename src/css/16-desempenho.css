@@ -25,35 +25,35 @@
 }
 
 .filme { contain-intrinsic-size: auto 510px; }
-#apontamento-interno { contain-intrinsic-size: auto 1010px; }
+#apontamento-interno { contain-intrinsic-size: auto 1105px; }
 #como-funciona { contain-intrinsic-size: auto 600px; }
 #servicos { contain-intrinsic-size: auto 685px; }
 #quem-somos { contain-intrinsic-size: auto 1345px; }
 #pagamentos { contain-intrinsic-size: auto 980px; }
-#duvidas { contain-intrinsic-size: auto 725px; }
-#analise-gratuita { contain-intrinsic-size: auto 1215px; }
+#duvidas { contain-intrinsic-size: auto 650px; }
+#analise-gratuita { contain-intrinsic-size: auto 1340px; }
 .rodape { contain-intrinsic-size: auto 555px; }
 
 @media (max-width: 1023px) {
   .filme { contain-intrinsic-size: auto 415px; }
-  #apontamento-interno { contain-intrinsic-size: auto 1740px; }
+  #apontamento-interno { contain-intrinsic-size: auto 1820px; }
   #como-funciona { contain-intrinsic-size: auto 1020px; }
   #servicos { contain-intrinsic-size: auto 1150px; }
   #quem-somos { contain-intrinsic-size: auto 2025px; }
   #pagamentos { contain-intrinsic-size: auto 1275px; }
-  #duvidas { contain-intrinsic-size: auto 1010px; }
-  #analise-gratuita { contain-intrinsic-size: auto 2085px; }
+  #duvidas { contain-intrinsic-size: auto 930px; }
+  #analise-gratuita { contain-intrinsic-size: auto 1765px; }
   .rodape { contain-intrinsic-size: auto 685px; }
 }
 
 @media (max-width: 767px) {
   .filme { contain-intrinsic-size: auto 810px; }
-  #apontamento-interno { contain-intrinsic-size: auto 1955px; }
+  #apontamento-interno { contain-intrinsic-size: auto 2195px; }
   #como-funciona { contain-intrinsic-size: auto 1230px; }
   #servicos { contain-intrinsic-size: auto 1705px; }
   #quem-somos { contain-intrinsic-size: auto 2735px; }
   #pagamentos { contain-intrinsic-size: auto 2020px; }
-  #duvidas { contain-intrinsic-size: auto 1170px; }
-  #analise-gratuita { contain-intrinsic-size: auto 2520px; }
-  .rodape { contain-intrinsic-size: auto 1075px; }
+  #duvidas { contain-intrinsic-size: auto 1100px; }
+  #analise-gratuita { contain-intrinsic-size: auto 2275px; }
+  .rodape { contain-intrinsic-size: auto 1040px; }
 }

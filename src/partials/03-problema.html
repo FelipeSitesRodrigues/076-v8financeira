@@ -27,23 +27,36 @@
       </ul>
     </div>
 
-    <div class="painel hud painel--banco" data-revela="painel">
-      <h3 class="painel__titulo">O que o banco vê</h3>
-      <ul class="painel__lista">
-        <li style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Apontamento interno ativo</li>
-        <li style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Rating rebaixado</li>
-        <li style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Operação registrada com erro no SCR</li>
-        <li style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Capacidade de pagamento subestimada</li>
-      </ul>
+    <div class="alarme">
+      <div class="painel hud painel--banco" data-revela="painel">
+        <h3 class="painel__titulo"><span class="sirene" aria-hidden="true"></span>O que o banco vê</h3>
+        <ul class="painel__lista">
+          <li style="--i:0"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Apontamento interno ativo</li>
+          <li style="--i:1"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Rating rebaixado</li>
+          <li style="--i:2"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Operação registrada com erro no SCR</li>
+          <li style="--i:3"><svg class="ic" aria-hidden="true"><use href="#i-alert-circle"/></svg>Capacidade de pagamento subestimada</li>
+        </ul>
+      </div>
     </div>
 
     <div class="problema__video" data-revela="celular">
+      <p class="bomba"><span class="sirene" aria-hidden="true"></span>Você tem apontamento interno?</p>
       <?video apontamento?>
     </div>
 
-    <div class="problema__ctas" data-revela-grupo>
-      <a class="btn btn--mint btn--g" href="{{wpp|Olá! Vim pelo site e quero entender se tenho *apontamento interno*.}}" target="_blank" rel="noopener" data-evento="whatsapp_problema" data-revela><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg> Falar com um especialista</a>
-      <a class="btn btn--linha btn--g" href="#peticao" data-evento="peticao_problema" data-revela><svg class="ic ic--desce" aria-hidden="true"><use href="#i-file-download"/></svg> Baixar a petição pronta</a>
+    <div class="problema__depois" data-revela-grupo>
+      <div class="termos" data-revela>
+        <p class="termos__titulo">Depois do vídeo: assinatura e termo</p>
+        <ul class="termos__lista">
+          <li><a class="termo" href="/docs/termo-de-autorizacao-v8.pdf" download data-evento="download_termo_autorizacao_problema"><svg class="ic termo__icone" aria-hidden="true"><use href="#i-file-type-pdf"/></svg><span class="termo__texto"><b>Termo de Autorização</b><small>Assine pelo gov.br e envie pra V8</small></span><svg class="ic termo__baixar" aria-hidden="true"><use href="#i-download"/></svg></a></li>
+          <li><a class="termo" href="/docs/termo-de-condicoes-comerciais-v8.pdf" download data-evento="download_termo_comercial_problema"><svg class="ic termo__icone" aria-hidden="true"><use href="#i-file-type-pdf"/></svg><span class="termo__texto"><b>Termo de Condições Comerciais</b><small>Valor, prazos e obrigações</small></span><svg class="ic termo__baixar" aria-hidden="true"><use href="#i-download"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="problema__ctas">
+        <a class="btn btn--mint btn--g" href="{{wpp|Olá! Vim pelo site e quero entender se tenho *apontamento interno*.}}" target="_blank" rel="noopener" data-evento="whatsapp_problema" data-revela><svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg> Falar com um especialista</a>
+        <a class="btn btn--linha btn--g" href="#analise-gratuita" data-evento="cta_problema_analise" data-revela>Fazer minha análise gratuita <svg class="ic ic--seta" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
     </div>
   </div>
 </section>

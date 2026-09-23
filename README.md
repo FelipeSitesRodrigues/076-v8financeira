@@ -68,6 +68,14 @@ no celular entra depois do painel, com legenda. Nenhum baixa com a página: `pre
 do próprio filme; o arquivo só começa a vir no play. Um toca por vez e pausa quando a
 aba some.
 
+**Ajustes do Augusto e do Rafael (2026-09-23).** Saiu a minuta de petição (card, botão do
+problema, pergunta 8 do FAQ, link do rodapé e o arquivo). O painel "o que o banco vê" e a
+bomba "Você tem apontamento interno?", em cima do vídeo 4, piscam em vermelho no mesmo compasso
+de 1,2 s (só opacity e transform; com movimento reduzido ficam acesos e parados). Embaixo do
+vídeo 4 entram os dois termos em versão curta. Na análise a ordem virou vídeo 3, termos e só
+então o formulário; no desktop o formulário acompanha a rolagem quando a tela tem 880 px de
+altura ou mais.
+
 **A linha da virada.** Em "Como funciona" o traço é desenhado pelo JS a partir do centro
 real de cada nó, então acompanha qualquer largura e fonte. No desktop ele se desenha
 inteiro quando a seção aparece e acende cada nó no instante em que chega nele; abaixo de
