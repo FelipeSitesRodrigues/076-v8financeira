@@ -62,7 +62,9 @@ decisão do Felipe (2026-09-23) foram construídas sem ela: em "Quem somos" a pe
 operações existir, é trocar a chave `marca` de `src/fotos.json`.
 
 **Vídeos.** VIDEO 1 logo depois do hero (pedido do Felipe), VIDEO 4 no problema, VIDEO 3
-na análise gratuita. Nenhum baixa com a página: `preload="none"` e capa estática tirada
+na análise gratuita e o VÍDEO 2 (o FILME 03 do wireframe, pagamento pós-pago) em Pagamentos:
+do tablet pra cima o celular pousa no canto de baixo da foto do casal, sem cobrir os dois;
+no celular entra depois do painel, com legenda. Nenhum baixa com a página: `preload="none"` e capa estática tirada
 do próprio filme; o arquivo só começa a vir no play. Um toca por vez e pausa quando a
 aba some.
 
@@ -112,13 +114,13 @@ deploy.
    CNPJ (LGPD). Hoje o texto do consentimento cita a política sem link.
 6. **Contrato x promessa do hero**: o termo comercial do Augusto (cláusulas 5 e 11) cobra
    pela conclusão do serviço, e o site promete "só paga depois que o crédito sair". Ajustar
-   o termo antes de publicar (ver memoria.md do 076).
-7. **FILME 03** (vídeo de pagamentos), que ainda não veio.
-8. Pixel do Meta e GA4: o JS já dispara os eventos (`Contact` nos botões de WhatsApp,
+   o termo antes de publicar (ver memoria.md do 076). O VÍDEO 2 do Augusto, que está na
+   seção de pagamento, também diz "o cliente só paga após serviço concluído".
+7. Pixel do Meta e GA4: o JS já dispara os eventos (`Contact` nos botões de WhatsApp,
    `Lead` no formulário e nos downloads) se os scripts estiverem na página.
 
 ## Deploy
 
 GitHub e Vercel, como nos outros projetos. O `vercel.json` serve `dist/` sem instalar
 nada, então rodar `node build.mjs` antes de cada push: é o `dist/` do repositório que vai
-pro ar. Os três vídeos somam 42 MB, dentro do limite de arquivo do GitHub.
+pro ar. Os quatro vídeos somam 49 MB, dentro do limite de arquivo do GitHub.

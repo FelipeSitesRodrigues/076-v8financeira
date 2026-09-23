@@ -39,7 +39,7 @@ Brand board approved 2026-09-23 (`Recursos Site/00 - IDENTIDADE VISUAL.png`): th
 
 ## Evidence on Hand
 
-Three client videos (vertical 9:16), four generated photos (hero desktop/mobile, credit denied, couple with house and car), the logo files and the brand board, the client's documents. No testimonials, no case numbers, no client count: V8 is a new company and none of these may be invented.
+Four client videos (vertical 9:16), four generated photos (hero desktop/mobile, credit denied, couple with house and car), the logo files and the brand board, the client's documents. No testimonials, no case numbers, no client count: V8 is a new company and none of these may be invented.
 
 ## Product Principles
 

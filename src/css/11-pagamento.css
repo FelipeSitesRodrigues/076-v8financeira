@@ -190,6 +190,40 @@
   margin-top: 28px;
 }
 
+/* Filme 03, o do pagamento. A partir do tablet o celular divide a célula
+   da foto e pousa no canto de baixo, sobre o carro e o jardim: o casal
+   fica livre. No celular a foto é pequena demais pra isso e o vídeo entra
+   depois do painel, com a legenda. */
+.pagamento__video {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+}
+
+.pagamento__video .celular {
+  --w: clamp(164px, 14.5vw, 212px);
+}
+
+@media (min-width: 768px) {
+  .pagamento__cena,
+  .pagamento__video {
+    grid-area: 1 / 1;
+  }
+
+  .pagamento__video {
+    align-self: end;
+    justify-self: start;
+    margin: 0 0 clamp(16px, 2.2vw, 32px) clamp(16px, 2.2vw, 32px);
+  }
+
+  /* sobre a foto, a legenda disputaria com a imagem: o play e o nome
+     acessível do botão já dizem o que é */
+  .pagamento__video .celular__legenda {
+    display: none;
+  }
+}
+
 @media (max-width: 1023px) {
   .pagamento__grade {
     grid-template-columns: minmax(0, 1fr);
@@ -212,6 +246,14 @@
 }
 
 @media (max-width: 767px) {
+  .pagamento__video {
+    margin-top: 16px;
+  }
+
+  .pagamento__video .celular {
+    --w: min(248px, 68vw);
+  }
+
   .formas li {
     grid-template-columns: auto minmax(0, 1fr);
     gap: 4px 14px;

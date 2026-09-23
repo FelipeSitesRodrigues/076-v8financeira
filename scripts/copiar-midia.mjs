@@ -33,6 +33,8 @@ const COPIAS = [
   ['VÍDEOS QUE O AUGUSTO QUER NO SITE/VIDEO 4.mp4', 'assets/video/filme-apontamento-interno.mp4'],
   // filme 02 do wireframe, autorização de consulta do SCR, junto do formulário
   ['VÍDEOS QUE O AUGUSTO QUER NO SITE/VIDEO 3.mp4', 'assets/video/filme-autorizacao-scr.mp4'],
+  // filme 03 do wireframe (o Augusto chamou de VÍDEO 2), pagamento pós-pago, na seção de pagamentos
+  ['VÍDEOS QUE O AUGUSTO QUER NO SITE/VÍDEO 2 - PAGAMENTO POS PAGO.mp4', 'assets/video/filme-pagamento.mp4'],
   ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/TERMO DE AUTORIZAÇÃO PDF.pdf', 'docs/termo-de-autorizacao-v8.pdf'],
   ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/termo e contrato consultoria.pdf', 'docs/termo-de-condicoes-comerciais-v8.pdf'],
   ['DOCUMENTOS EXPLICATIVOS DO SERVIÇO/Minuta_Peticao_Reanalise_Correcao_SCR_Credito.docx', 'docs/minuta-peticao-correcao-scr.docx'],

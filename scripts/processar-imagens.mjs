@@ -6,7 +6,7 @@
  * que cada imagem aparece no layout, contando tela de densidade 2.
  *
  * Também gera:
- * - as capas dos três vídeos, tiradas dos próprios filmes (quadro escolhido
+ * - as capas dos quatro vídeos, tiradas dos próprios filmes (quadro escolhido
  *   a olho, tempo anotado em CAPAS);
  * - favicon e ícones de tela inicial, com o símbolo sobre o preto da marca;
  * - a imagem de compartilhamento (og-image.jpg), que é o que aparece quando o
@@ -94,12 +94,14 @@ await gerar('02 LOGO V8 - FAVICON.png', 'v8-simbolo', [1000, 640, 360, 180, 120]
 // -------------------------------------------------------------------- vídeos
 // Capa de cada vídeo, tirada do próprio filme. O tempo foi escolhido olhando
 // os quadros: o filme 1 abre no protagonista olhando o celular, o 4 no
-// "crédito negado" e o 3 no painel de análise.
+// "crédito negado", o 3 no painel de análise e o de pagamento nos painéis
+// financeiros (o começo dele é bege, destoa do site escuro).
 const V = 'VÍDEOS QUE O AUGUSTO QUER NO SITE/'
 const CAPAS = [
   { video: 'VIDEO 1.mp4', base: 'capa-filme', tempo: 1.5 },
   { video: 'VIDEO 4.mp4', base: 'capa-apontamento', tempo: 0.5 },
   { video: 'VIDEO 3.mp4', base: 'capa-autorizacao', tempo: 8 },
+  { video: 'VÍDEO 2 - PAGAMENTO POS PAGO.mp4', base: 'capa-pagamento', tempo: 12 },
 ]
 for (const c of CAPAS) {
   const cache = `${CACHE}${c.base}-${c.tempo}.png`

@@ -24,5 +24,14 @@
     "falado": "2 minutos e 23 segundos",
     "titulo": "Vídeo: como funciona a autorização de consulta do SCR",
     "legenda": "Assista: como funciona a autorização de consulta"
+  },
+
+  "pagamento": {
+    "arquivo": "filme-pagamento.mp4",
+    "capa": "capa-pagamento",
+    "duracao": "0:59",
+    "falado": "59 segundos",
+    "titulo": "Vídeo: como funciona o pagamento pós-pago da V8",
+    "legenda": "Assista: como funciona o pagamento"
   }
 }

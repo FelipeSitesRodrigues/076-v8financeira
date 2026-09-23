@@ -228,5 +228,25 @@
   "w": 400,
   "h": 711,
   "kb": 22.9
+ },
+ "capa-pagamento-576.avif": {
+  "w": 576,
+  "h": 1024,
+  "kb": 19.1
+ },
+ "capa-pagamento-576.webp": {
+  "w": 576,
+  "h": 1024,
+  "kb": 20.9
+ },
+ "capa-pagamento-400.avif": {
+  "w": 400,
+  "h": 711,
+  "kb": 12
+ },
+ "capa-pagamento-400.webp": {
+  "w": 400,
+  "h": 711,
+  "kb": 15.5
  }
 }
