@@ -76,6 +76,18 @@ vídeo 4 entram os dois termos em versão curta. Na análise a ordem virou víde
 então o formulário; no desktop o formulário acompanha a rolagem quando a tela tem 880 px de
 altura ou mais.
 
+**Segunda rodada do Augusto (2026-09-23, noite).** Título virou "Você só paga quando conseguir o
+seu crédito" (e o og:title junto). A bomba virou faixa própria, grande, com "???": no desktop em
+cima dos painéis, no celular entre os painéis e o vídeo 4, e dá um tranco no clarão. No celular,
+subtítulo, botões e selos descem pra depois do vídeo 1: moram nos partials `chamada` e `selos`,
+moram só no 02-filme.
+
+**Terceira rodada (2026-09-24).** Em qualquer tela o topo é título e foto (no desktop, mais o
+botão "Falar com um especialista"); subtítulo, análise gratuita e selos vêm depois do vídeo 1.
+Saiu a lista de termos de baixo do vídeo 4: o termo só aparece depois do vídeo 3, que é o que
+explica ele (ordem do áudio do Rafael). Serviços em dois grupos: o que a V8 resolve (check
+verde) e o que não resolve (vermelho, ícone riscado): apontamento interno e limpeza do nome.
+
 **A linha da virada.** Em "Como funciona" o traço é desenhado pelo JS a partir do centro
 real de cada nó, então acompanha qualquer largura e fonte. No desktop ele se desenha
 inteiro quando a seção aparece e acende cada nó no instante em que chega nele; abaixo de

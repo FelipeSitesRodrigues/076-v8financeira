@@ -24,10 +24,10 @@
   content-visibility: auto;
 }
 
-.filme { contain-intrinsic-size: auto 510px; }
-#apontamento-interno { contain-intrinsic-size: auto 1105px; }
+.filme { contain-intrinsic-size: auto 835px; }
+#apontamento-interno { contain-intrinsic-size: auto 1150px; }
 #como-funciona { contain-intrinsic-size: auto 600px; }
-#servicos { contain-intrinsic-size: auto 685px; }
+#servicos { contain-intrinsic-size: auto 1070px; }
 #quem-somos { contain-intrinsic-size: auto 1345px; }
 #pagamentos { contain-intrinsic-size: auto 980px; }
 #duvidas { contain-intrinsic-size: auto 650px; }
@@ -35,10 +35,10 @@
 .rodape { contain-intrinsic-size: auto 555px; }
 
 @media (max-width: 1023px) {
-  .filme { contain-intrinsic-size: auto 415px; }
-  #apontamento-interno { contain-intrinsic-size: auto 1820px; }
+  .filme { contain-intrinsic-size: auto 900px; }
+  #apontamento-interno { contain-intrinsic-size: auto 1885px; }
   #como-funciona { contain-intrinsic-size: auto 1020px; }
-  #servicos { contain-intrinsic-size: auto 1150px; }
+  #servicos { contain-intrinsic-size: auto 1635px; }
   #quem-somos { contain-intrinsic-size: auto 2025px; }
   #pagamentos { contain-intrinsic-size: auto 1275px; }
   #duvidas { contain-intrinsic-size: auto 930px; }
@@ -47,10 +47,10 @@
 }
 
 @media (max-width: 767px) {
-  .filme { contain-intrinsic-size: auto 810px; }
-  #apontamento-interno { contain-intrinsic-size: auto 2195px; }
+  .filme { contain-intrinsic-size: auto 1440px; }
+  #apontamento-interno { contain-intrinsic-size: auto 2135px; }
   #como-funciona { contain-intrinsic-size: auto 1230px; }
-  #servicos { contain-intrinsic-size: auto 1705px; }
+  #servicos { contain-intrinsic-size: auto 2180px; }
   #quem-somos { contain-intrinsic-size: auto 2735px; }
   #pagamentos { contain-intrinsic-size: auto 2020px; }
   #duvidas { contain-intrinsic-size: auto 1100px; }

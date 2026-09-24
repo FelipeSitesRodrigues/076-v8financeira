@@ -131,7 +131,9 @@ for (const w of [1440, 390]) {
   }
   await espera(2600)
   const r = await p.evaluate(() => ({
-    presos: [...document.querySelectorAll('[data-revela]:not(.visivel)')].map((e) => e.tagName.toLowerCase() + '.' + (e.classList[0] || '?')),
+    // o que está escondido nessa largura (o bloco do topo embaixo do vídeo 1
+    // só existe no celular) nunca cruza a tela e não conta
+    presos: [...document.querySelectorAll('[data-revela]:not(.visivel)')].filter((e) => e.getClientRects().length).map((e) => e.tagName.toLowerCase() + '.' + (e.classList[0] || '?')),
     apagados: document.querySelectorAll('.passo:not(.aceso)').length,
     desenhada: document.querySelector('.como').classList.contains('desenhada'),
   }))

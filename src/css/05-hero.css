@@ -3,9 +3,11 @@
      esquerda. A altura acompanha a proporção da foto (56,25vw), então em
      1440 o cartão, a família, o carro e a chave aparecem inteiros;
    - tablet (768-1023): título, foto larga, subtítulo, botões;
-   - celular: o título fica sobre o céu escuro da foto vertical, a família
-     aparece logo abaixo, e só depois vêm subtítulo e botões (padrão da casa:
-     título, imagem, subtítulo, botões). */
+   - celular: o título fica sobre o céu escuro da foto vertical e a família
+     aparece logo abaixo.
+   Subtítulo, análise gratuita e selos não moram mais aqui: o Augusto pediu
+   "fazer análise gratuita depois do primeiro vídeo" (2026-09-23), e eles
+   foram pro 02-filme. No desktop o topo fica com o botão de especialista. */
 .hero {
   position: relative;
   isolation: isolate;
@@ -46,33 +48,10 @@
   color: var(--mint);
 }
 
-.hero__sub {
-  font-size: 1.125rem;
-  line-height: 1.55;
-  color: var(--cromo-claro);
-  text-wrap: pretty;
-}
-
+/* só no desktop: no celular e no tablet o topo é título e foto, e os botões
+   vêm depois do vídeo 1 (02-filme) */
 .hero__ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.hero__apoio {
-  font-size: .875rem;
-  line-height: 1.5;
-  color: var(--texto-2);
-}
-
-.hero__apoio span {
-  white-space: nowrap;
-}
-
-.hero__apoio i {
-  font-style: normal;
-  color: var(--verde);
-  margin: 0 .3em;
+  display: none;
 }
 
 /* ------------------------------------------- linha e piso do mockup */
@@ -240,30 +219,14 @@
     margin-top: 20px;
   }
 
-  .hero__sub {
-    max-width: 34rem;
-    margin-top: 26px;
-  }
-
   .hero__ctas {
-    margin-top: 34px;
-  }
-
-  .hero__apoio {
-    margin-top: 22px;
-  }
-
-  .hero__selos {
-    position: relative;
+    display: flex;
+    margin-top: 36px;
   }
 }
 
+/* os selos moram no 02-filme desde 2026-09-23; o desenho deles ficou aqui */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .hero__sub {
-    max-width: 29rem;
-    font-size: 1.0625rem;
-  }
-
   .selos li {
     gap: 12px;
     padding-inline: 10px;
@@ -281,7 +244,7 @@
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto 1fr auto auto auto auto;
+    grid-template-rows: auto auto 1fr;
     padding-bottom: 12px;
   }
 
@@ -297,10 +260,7 @@
   }
 
   .hero__rotulo,
-  .hero__titulo,
-  .hero__sub,
-  .hero__ctas,
-  .hero__apoio {
+  .hero__titulo {
     position: relative;
     z-index: 1;
     padding-inline: var(--gutter);
@@ -338,28 +298,6 @@
     background:
       linear-gradient(180deg, rgb(2 13 9 / .9) 0%, rgb(2 13 9 / .62) 30%, rgb(2 13 9 / 0) 50%),
       linear-gradient(0deg, var(--preto) 0%, rgb(2 13 9 / .75) 11%, rgb(2 13 9 / 0) 26%);
-  }
-
-  .hero__sub {
-    grid-row: 4;
-    margin-top: -64px;
-    max-width: 40rem;
-  }
-
-  .hero__ctas {
-    grid-row: 5;
-    display: grid;
-    margin-top: 26px;
-  }
-
-  .hero__apoio {
-    grid-row: 6;
-    margin-top: 18px;
-  }
-
-  .hero__selos {
-    grid-row: 7;
-    margin-top: 34px;
   }
 
   .selos {
@@ -413,10 +351,6 @@
     font-size: clamp(3.2rem, 1rem + 5vw, 4rem);
   }
 
-  .hero__ctas {
-    display: flex;
-  }
-
   .selos {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
@@ -437,20 +371,8 @@
 }
 
 @media (max-width: 767px) {
-  .hero__apoio i {
-    display: none;
-  }
-
-  .hero__apoio span {
-    display: block;
-  }
-
   .hero__rotulo {
     font-size: .6875rem;
     letter-spacing: .14em;
-  }
-
-  .hero__sub {
-    font-size: 1.0625rem;
   }
 }

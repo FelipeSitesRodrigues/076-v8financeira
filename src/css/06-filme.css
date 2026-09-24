@@ -1,6 +1,9 @@
 /* Filme 01, logo depois do hero (pedido do Augusto: o vídeo na página
    principal). Celular à esquerda com a luz de tela subindo por trás, a
-   pergunta à direita. No celular: pergunta, vídeo, texto. */
+   pergunta à direita e, embaixo dela, o bloco que antes abria a página
+   (subtítulo, análise gratuita, especialista); os selos fecham a seção na
+   largura toda. O Augusto quer "fazer análise gratuita" depois do primeiro
+   vídeo (2026-09-23). No celular: pergunta, texto, vídeo, bloco, selos. */
 .filme {
   position: relative;
   isolation: isolate;
@@ -27,14 +30,35 @@
 .filme__grade {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-areas:
+    'midia texto'
+    'midia chamada'
+    'selos selos';
   align-items: center;
-  gap: clamp(40px, 6vw, 104px);
+  gap: 0 clamp(40px, 6vw, 104px);
 }
 
 .filme__midia {
+  grid-area: midia;
   display: grid;
   justify-items: end;
   padding-right: clamp(0px, 3vw, 48px);
+}
+
+.filme__texto {
+  grid-area: texto;
+  align-self: end;
+}
+
+.filme__chamada {
+  grid-area: chamada;
+  align-self: start;
+  margin-top: 30px;
+}
+
+.filme__selos {
+  grid-area: selos;
+  margin-top: clamp(56px, 6vw, 88px);
 }
 
 .filme .celular {
@@ -63,10 +87,45 @@
   color: var(--texto-2);
 }
 
+/* --------------------------------------------- o bloco (partial chamada) */
+.chamada__sub {
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--cromo-claro);
+  text-wrap: pretty;
+}
+
+/* os dois botões um sob o outro, na largura do maior: lado a lado não
+   cabem na coluna do texto até 1920 */
+.chamada__ctas {
+  display: grid;
+  grid-template-columns: max-content;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.chamada__apoio {
+  margin-top: 18px;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.chamada__apoio span {
+  white-space: nowrap;
+}
+
+.chamada__apoio i {
+  font-style: normal;
+  color: var(--verde);
+  margin: 0 .3em;
+}
+
 @media (max-width: 767px) {
   .filme__grade {
     grid-template-columns: minmax(0, 1fr);
-    gap: 0;
+    grid-template-areas: none;
   }
 
   .filme__texto {
@@ -76,23 +135,46 @@
   .filme__grade > *,
   .filme__texto > * {
     grid-column: 1;
+    grid-area: auto;
   }
 
-  .filme__titulo { grid-row: 2; }
+  .filme__titulo { grid-row: 1; }
+
+  .filme__lead {
+    grid-row: 2;
+    margin-top: 24px;
+  }
+
+  .filme__apoio { grid-row: 3; }
 
   .filme__midia {
-    grid-row: 3;
+    grid-row: 4;
     justify-items: center;
     padding-right: 0;
     margin-top: 34px;
   }
 
-  .filme__lead {
-    grid-row: 4;
+  .filme__chamada {
+    grid-row: 5;
+    margin-top: 36px;
+  }
+
+  .filme__selos {
+    grid-row: 6;
     margin-top: 34px;
   }
 
-  .filme__apoio { grid-row: 5; }
+  .chamada__ctas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chamada__apoio i {
+    display: none;
+  }
+
+  .chamada__apoio span {
+    display: block;
+  }
 
   .filme .celular {
     --w: min(264px, 72vw);
@@ -108,11 +190,15 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .filme__grade {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-    gap: 40px;
+    column-gap: 40px;
   }
 
   .filme__midia {
     justify-items: center;
     padding-right: 0;
+  }
+
+  .chamada__ctas {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

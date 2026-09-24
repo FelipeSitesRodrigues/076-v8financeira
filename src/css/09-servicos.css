@@ -1,5 +1,8 @@
-/* Serviços: grade 3 x 2 de painéis HUD com dois cantos chanfrados, a caixa
-   do ícone à esquerda e o botão de WhatsApp do próprio serviço. */
+/* Serviços: painéis HUD com dois cantos chanfrados, a caixa do ícone à
+   esquerda e o botão de WhatsApp do próprio serviço. Desde 2026-09-23 em dois
+   grupos, pedido do Augusto: o que a V8 resolve (check verde, 3 + 2 no
+   desktop) e o que não resolve (vermelho, com o ícone riscado como ele
+   rabiscou no print): apontamento interno e limpeza do nome. */
 .servicos {
   position: relative;
   padding: var(--secao) 0;
@@ -162,13 +165,116 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1179px) {
-  .servicos__grade {
+/* 5 cards: 3 em cima e 2 embaixo, largos, sem buraco na grade */
+@media (min-width: 1180px) {
+  .servicos__grade--sim {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .servicos__grade--sim > * {
+    grid-column: span 2;
+  }
+
+  .servicos__grade--sim > :nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 768px) {
+  .servicos__grade--nao {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+@media (min-width: 768px) and (max-width: 1179px) {
+  .servicos__grade--sim {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .servicos__grade--sim > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ------------------------------------------------ check e X no título */
+.servico__marca {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: -4px;
+  stroke-width: 2;
+  color: var(--mint);
+}
+
+/* ----------------------------------------------------- o que não resolve */
+.servicos__nao {
+  margin-top: clamp(64px, 7vw, 104px);
+  font-size: clamp(1.75rem, 1rem + 2vw, 2.5rem);
+}
+
+.servicos__nao em {
+  color: var(--alerta);
+}
+
+.servicos__grade--nao {
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.servico--nao {
+  --borda: rgb(255 77 94 / .5);
+  --diag: var(--alerta);
+  --fundo: linear-gradient(160deg, rgb(255 77 94 / .08), rgb(8 26 20 / .9) 45%, rgb(2 13 9 / .92));
+}
+
+.servico--nao::after {
+  background: radial-gradient(120% 90% at 0% 0%, rgb(255 77 94 / .12), transparent 60%);
+}
+
+.servico--nao .servico__marca {
+  color: var(--alerta);
+}
+
+.servico--nao .servico__icone {
+  position: relative;
+  border-color: rgb(255 77 94 / .45);
+  color: var(--cinza);
+}
+
+/* o X por cima do ícone, como o Augusto riscou no print */
+.servico__icone .ic.servico__risco {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 72px;
+  height: 72px;
+  stroke-width: 1.6;
+  color: var(--alerta);
+}
+
+@media (hover: hover) {
+  .servico--nao:hover {
+    --borda: rgb(255 77 94 / .8);
+  }
+
+  .servico--nao:hover .servico__icone {
+    border-color: rgb(255 77 94 / .7);
+    color: var(--cinza);
+  }
+}
+
 @media (max-width: 767px) {
+  .servico__icone .ic.servico__risco {
+    width: 54px;
+    height: 54px;
+  }
+
+  .servico__marca {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  }
+
   .servicos__grade {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;

@@ -16,7 +16,7 @@
      no mockup. O verde-água fica pra ícone e detalhe, e o mint segue sozinho
      como acento */
   --texto-2: color-mix(in srgb, var(--cromo-claro) 80%, var(--preto));
-  --alerta: #ff4d5e;        /* SÓ na seção do problema e em erro de formulário */
+  --alerta: #ff4d5e;        /* SÓ no problema, no "o que não resolve" dos serviços e em erro de formulário */
 
   /* as mesmas cores com transparência */
   --mint-08: rgb(0 249 164 / .08);

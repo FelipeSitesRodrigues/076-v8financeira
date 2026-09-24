@@ -13,26 +13,13 @@
   animation: surgir 700ms var(--ease) both 60ms;
 }
 
-.hero__sub {
-  animation: surgir 800ms var(--ease) both 520ms;
-}
-
 .hero__ctas {
   animation: surgir 800ms var(--ease) both 620ms;
-}
-
-.hero__apoio {
-  animation: surgir 800ms var(--ease) both 720ms;
 }
 
 /* a foto "assenta": só escala, sem opacidade, pra não atrasar o LCP */
 .hero__img {
   animation: assentar 1800ms var(--ease-suave) both;
-}
-
-.selos li {
-  animation: surgir 700ms var(--ease) both;
-  animation-delay: calc(820ms + var(--i, 0) * 70ms);
 }
 
 /* a subida da linha no hero se desenha depois do título e acende os nós */
