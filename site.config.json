@@ -1,7 +1,7 @@
 {
   "_leia": "Dados que ainda dependem do Augusto. Campo vazio faz o elemento sumir do site em vez de virar link morto. O build lista o que está faltando a cada execução.",
 
-  "whatsapp": "",
+  "whatsapp": "5511940059518",
   "_whatsapp": "só dígitos, com 55 e DDD. Ex.: 5511999998888. Sem ele, todo botão de WhatsApp cai no e-mail.",
   "whatsappExibicao": "",
   "_whatsappExibicao": "como o número aparece escrito no rodapé. Ex.: (11) 99999-8888",
